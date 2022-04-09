@@ -1,0 +1,1 @@
+const homePageTitle = "Intake Tracker";
