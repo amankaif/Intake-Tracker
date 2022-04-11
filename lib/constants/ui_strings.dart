@@ -1,1 +1,0 @@
-const homePageTitle = "Intake Tracker";
