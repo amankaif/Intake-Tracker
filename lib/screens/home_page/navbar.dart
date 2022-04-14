@@ -41,25 +41,25 @@ class NavBar extends StatelessWidget {
             leading: const Icon(Icons.home),
             title: const Text('Home'),
             onTap: () =>
-                null, //on clicking this we can redirect or we can perform any action
+                {}, //on clicking this we can redirect or we can perform any action
           ),
           ListTile(
             leading: const Icon(Icons.leaderboard),
             title: const Text('LeaderBoard'),
             onTap: () =>
-                null, //on clicking this we can redirect or we can perform any action
+                {}, //on clicking this we can redirect or we can perform any action
           ),
           ListTile(
             leading: const Icon(Icons.graphic_eq),
             title: const Text('Progress'),
             onTap: () =>
-                null, //on clicking this we can redirect or we can perform any action
+                {}, //on clicking this we can redirect or we can perform any action
           ),
           ListTile(
             leading: const Icon(Icons.note),
             title: const Text('Notes'),
             onTap: () =>
-                null, //on clicking this we can redirect or we can perform any action
+                {}, //on clicking this we can redirect or we can perform any action
           ),
         ],
       ),

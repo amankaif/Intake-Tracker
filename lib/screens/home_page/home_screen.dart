@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:calorie_tracker/screens/home_page/home_page.dart';
+import 'package:calorie_tracker/ui_strings.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,13 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       drawer: const NavBar(),
       appBar: AppBar(
-        title: const Text(
-          "Monday 11 April, 2022",
-          style: TextStyle(
-            // fontFamily: 'Inter',
-            fontSize: 17,
-          ),
-        ),
+        title: displayedDayDateString,
+
         centerTitle: true,
         // backgroundColor: Colors.green,
       ),
