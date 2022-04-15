@@ -1,2 +1,2 @@
-export 'home_screen.dart';
-export 'navbar.dart';
+export './view/view.dart';
+export './widgets/widgets.dart';
