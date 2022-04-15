@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home_page/home_screen.dart';
+
+import 'package:calorie_tracker/screens/home_page/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,8 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
+      routes: {'/': (context) => const HomeScreen()},
+
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      // home: HomeScreen(),
     );
   }
 }

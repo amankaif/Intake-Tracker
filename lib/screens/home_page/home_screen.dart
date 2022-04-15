@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'navbar.dart';
+import 'package:calorie_tracker/screens/home_page/home_page.dart';
+import 'package:calorie_tracker/ui_strings.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,22 +13,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavBar(),
-        appBar: AppBar(
-          title: Text("Monday 11 April, 2022",
-            style: TextStyle(
-              // fontFamily: 'Inter',
-              fontSize: 17,
-            ),
+      drawer: const NavBar(),
+      appBar: AppBar(
+        title: displayedDayDateString,
 
-          ),
-          centerTitle: true,
-          // backgroundColor: Colors.green,
-        ),
+        centerTitle: true,
+        // backgroundColor: Colors.green,
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {  },
-        child:
-        Text('Meals'),
+        onPressed: () {},
+        child: const Text('Meals'),
 
         // backgroundColor: Colors.green,
       ),
