@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:calorie_tracker/screens/home_page/home_page.dart';
 import 'package:calorie_tracker/ui_strings.dart';
-import '../models/data.dart';
+import 'package:calorie_tracker/models/models.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

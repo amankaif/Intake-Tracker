@@ -1,2 +1,2 @@
 export './view/view.dart';
-export './widgets/widgets.dart';
+export 'package:calorie_tracker/widgets/widgets.dart';

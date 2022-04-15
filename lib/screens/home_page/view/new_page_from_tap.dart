@@ -1,4 +1,4 @@
-import 'package:calorie_tracker/screens/home_page/models/data.dart';
+import 'package:calorie_tracker/models/models.dart';
 import 'package:flutter/material.dart';
 
 class NewPage extends StatelessWidget {
