@@ -1,6 +1,6 @@
-import 'package:calorie_tracker/widgets/home_page_card_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:calorie_tracker/screens/home_page/home_page.dart';
+import 'package:calorie_tracker/widgets/widgets.dart';
+import 'package:calorie_tracker/screens/screens.dart';
 import 'package:calorie_tracker/ui_strings.dart';
 import 'package:calorie_tracker/models/models.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:calorie_tracker/screens/home_page/home_page.dart';
+import 'package:calorie_tracker/screens/screens.dart';
 
 void main() {
   runApp(const MyApp());
