@@ -1,3 +1,4 @@
+import 'package:calorie_tracker/screens/login_page/login_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:calorie_tracker/screens/screens.dart';
@@ -13,8 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // The initialRoute will and can be changed by people for testing purposes to start the app to the screen they want to test.
       initialRoute: '/',
-      routes: {'/': (context) => const HomeScreen()},
+      routes: {
+        '/': (context) => const HomeScreen(),
+        'login': (context) => const LoginPage()
+      },
 
       debugShowCheckedModeBanner: false,
       // home: HomeScreen(),
