@@ -1,3 +1,4 @@
+import 'package:calorie_tracker/screens/leader_board_page/leader_board_page.dart';
 import 'package:calorie_tracker/screens/login_page/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomeScreen(),
-        'login': (context) => const LoginPage()
+        'login': (context) => const LoginPage(),
+        'leader_board': (context) => const LeaderBoard()
       },
 
       debugShowCheckedModeBanner: false,
