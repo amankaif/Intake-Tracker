@@ -1,7 +1,5 @@
 // main.dart
 
-import 'package:calorie_tracker/screens/home_page/view/home_screen.dart';
-import 'package:calorie_tracker/screens/home_page/view/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:calorie_tracker/widgets/widgets.dart';
 
@@ -50,7 +48,6 @@ class _MealsPageState extends State<MealsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavBar(),
       appBar: AppBar(
         centerTitle: true,
         toolbarHeight: 60,
@@ -92,15 +89,6 @@ class _MealsPageState extends State<MealsPage> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) =>HomeScreen()));
-        },
-        child: const Icon(Icons.home),
-
-        // backgroundColor: Colors.green,
       ),
     );
   }
