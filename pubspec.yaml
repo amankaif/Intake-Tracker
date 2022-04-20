@@ -72,8 +72,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   assets:
+    - assets/images/bg_login.jpg
     - assets/images/bg.jpg
     - assets/images/cartoon.png
+
    
   fonts:
     - family: Inter

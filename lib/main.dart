@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // The initialRoute will and can be changed by people for testing purposes to start the app to the screen they want to test.
-      initialRoute: '/',
+      initialRoute: 'login',
       routes: {
-        '/': (context) => const HomeScreen(),
+        'home_screen': (context) => const HomeScreen(),
         'login': (context) => const LoginPage(),
         'leader_board': (context) => const LeaderBoard(),
         'meals': (context) => const MealsPage()

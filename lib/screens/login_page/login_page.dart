@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_const_constructors
+import 'package:calorie_tracker/screens/login_page/login_widgets/login_widgets.dart';
+import 'package:calorie_tracker/screens/login_page/login_text_style.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -5,36 +8,62 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Login Page"),
-          centerTitle: true,
-          backgroundColor: Colors.red[500],
-        ),
-        body: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text("lmao"),
-            TextButton(
-              onPressed: () {},
-              child: Text("Row button"),
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.amber[400])
-              ),
+    return Stack(
+      children: [
+        background(),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body: SafeArea(
+            child: Column(
+              children: [
+                Container(
+                  height: 200,
+                  child: Center(
+                    child: Text('Login', style: headingStyle),
+                  ),
+                ),
+                SizedBox(height: 100),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    children: [
+                      Column(
+                        children: [
+                          Center(
+                            child: EmailTextFeild(),
+                          ),
+                          PassTextFeild(),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 25.0),
+                            child: Container(
+                              width: double.infinity,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(20)
+                              ),
+                              child: TextButton(
+                                onPressed: (){},
+                                child: Text("Login", style: inputTextStyle),
+
+                              ),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Container(
-              color: Colors.blue[300],
-              padding: EdgeInsets.all(30),
-              child: Text("inside container"),
-            )
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Text("clicker"),
-          backgroundColor: Colors.green[300],
-        ));
+          ),
+        )
+      ],
+    );
   }
 }
-
