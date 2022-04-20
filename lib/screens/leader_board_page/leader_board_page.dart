@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:calorie_tracker/ui_strings.dart';
 
@@ -14,12 +13,12 @@ class LeaderBoardState extends State<LeaderBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back),
+        leading: const Icon(Icons.arrow_back),
         actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.share)),
-          IconButton(onPressed: (){}, icon: Icon(Icons.person_add)),
+          IconButton(onPressed: (){}, icon: const Icon(Icons.share)),
+          IconButton(onPressed: (){}, icon: const Icon(Icons.person_add)),
         ],
-        title: Text(
+        title: const Text(
           "Leader_board",
           style: TextStyle(fontSize: 29),
         ),
@@ -32,18 +31,18 @@ class LeaderBoardState extends State<LeaderBoard> {
           children: [
 
             Container(
-              padding: EdgeInsets.only(top : 40),
+              padding: const EdgeInsets.only(top : 40),
               height: 330,
               decoration: BoxDecoration(
                   color: leaderProfileBackgroundColor,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       bottomRight: Radius.circular(20),
                       bottomLeft: Radius.circular(20))),
               child: Column(
                 children: [
                   Stack(
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         backgroundImage: NetworkImage(
                             "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1331&q=80"),
                         radius: 50,
@@ -52,12 +51,12 @@ class LeaderBoardState extends State<LeaderBoard> {
                         bottom: 0.0,
                         right: 0.0,
                         child: Container(
-                          padding: EdgeInsets.all(4),
-                          decoration: BoxDecoration(shape: BoxShape.circle ,color: Colors.white),child: Icon(Icons.edit,color: Colors.purpleAccent,),),
+                          padding: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(shape: BoxShape.circle ,color: Colors.white),child: const Icon(Icons.edit,color: Colors.purpleAccent,),),
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
@@ -67,15 +66,15 @@ class LeaderBoardState extends State<LeaderBoard> {
                         color: leaderProfileTextColor,
                         fontWeight: FontWeight.w500),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 1,
                     indent: 20,
                     endIndent: 20,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
@@ -90,7 +89,7 @@ class LeaderBoardState extends State<LeaderBoard> {
                                 fontWeight: FontWeight.w300,
                                 color: Colors.white.withOpacity(0.9)),
                           ),
-                          Text("Level",
+                          const Text("Level",
                               style: TextStyle(
                                   fontSize: 19,
                                   fontWeight: FontWeight.bold,
@@ -104,7 +103,7 @@ class LeaderBoardState extends State<LeaderBoard> {
                                   fontSize: 42,
                                   fontWeight: FontWeight.w300,
                                   color: Colors.white.withOpacity(0.9))),
-                          Text("Rank",
+                          const Text("Rank",
                               style: TextStyle(
                                   fontSize: 19,
                                   fontWeight: FontWeight.bold,
@@ -116,15 +115,15 @@ class LeaderBoardState extends State<LeaderBoard> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               "Leaderboard",
               style: TextStyle(fontSize: 20),
             ),
             Container(
-              margin: EdgeInsets.all(20),
+              margin: const EdgeInsets.all(20),
               child: SizedBox(
                 height: 300,
                 child: ListView.separated(
@@ -132,7 +131,7 @@ class LeaderBoardState extends State<LeaderBoard> {
                     itemBuilder: (context, index) {
                       return ListTile(
                         title: Row(
-                          children: [
+                          children: const [
                             CircleAvatar(
                               backgroundImage: NetworkImage(
                                   "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=580&q=80"),
@@ -143,12 +142,12 @@ class LeaderBoardState extends State<LeaderBoard> {
                             Text("Nagarjuna")
                           ],
                         ),
-                        leading: Text("#${index + 1}" ,style: TextStyle(fontWeight: FontWeight.bold),),
+                        leading: Text("#${index + 1}" ,style: const TextStyle(fontWeight: FontWeight.bold),),
                         trailing: Text(
-                            "cal.${(2000 / (index + 1)).toString().substring(0, 5)}",style: TextStyle(fontWeight: FontWeight.bold)),
+                            "cal.${(2000 / (index + 1)).toString().substring(0, 5)}",style: const TextStyle(fontWeight: FontWeight.bold)),
                       );
                     },
-                    separatorBuilder: (context, index) => Divider(thickness: 1,color: Colors.purple,indent: 10,endIndent: 10,),
+                    separatorBuilder: (context, index) => const Divider(thickness: 1,color: Colors.purple,indent: 10,endIndent: 10,),
                     itemCount: 1),
               ),
             )

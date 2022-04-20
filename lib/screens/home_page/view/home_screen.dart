@@ -35,7 +35,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 CardWidget(item: items[index]),
           )),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, 'meals');
+        },
         child: const Icon(Icons.restaurant),
 
         // backgroundColor: Colors.green,
