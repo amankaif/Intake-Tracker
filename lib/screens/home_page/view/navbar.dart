@@ -44,8 +44,9 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.leaderboard),
             title: const Text('LeaderBoard'),
-            onTap: () =>
-                {}, //on clicking this we can redirect or we can perform any action
+            onTap: () => {
+              Navigator.pushNamed(context, 'leader_board')
+            }, //on clicking this we can redirect or we can perform any action
           ),
           ListTile(
             leading: const Icon(Icons.graphic_eq),
