@@ -1,15 +1,17 @@
-import 'package:calorie_tracker/models/data.dart';
+import 'package:calorie_tracker/models/meal_card.dart';
 import 'package:flutter/material.dart';
 import 'package:calorie_tracker/screens/home_page/view/new_page_from_tap.dart';
 
 class CardWidget extends StatefulWidget {
   final CardItem item;
+
   CardWidget({required this.item});
   @override
   State<CardWidget> createState() => _CardWidgetState();
 }
 
 class _CardWidgetState extends State<CardWidget> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: 200,
