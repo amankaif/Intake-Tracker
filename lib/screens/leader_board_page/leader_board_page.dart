@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:calorie_tracker/widgets/widgets.dart';
-import 'package:calorie_tracker/screens/screens.dart';
-import 'package:calorie_tracker/ui_strings.dart';
-import 'package:calorie_tracker/models/models.dart';
 
 class LeaderBoard extends StatefulWidget {
   const LeaderBoard({Key? key}) : super(key: key);
@@ -15,27 +11,30 @@ class LeaderBoardState extends State<LeaderBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavBar(),
       appBar: AppBar(
+        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back)),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.person_add)),
         ],
         title: const Text(
-          "Leader_board",
-          style: TextStyle(fontSize: 29),
+          "Leader Board",
+          style: TextStyle(fontSize: 25),
         ),
         centerTitle: true,
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
+
         child: Column(
           children: [
+
             Container(
               padding: const EdgeInsets.only(top: 40),
               height: 330,
-              decoration: BoxDecoration(
-                  color: leaderProfileBackgroundColor,
-                  borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                  color: Colors.orange,
+                  borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(20),
                       bottomLeft: Radius.circular(20))),
               child: Column(
@@ -52,12 +51,10 @@ class LeaderBoardState extends State<LeaderBoard> {
                         right: 0.0,
                         child: Container(
                           padding: const EdgeInsets.all(4),
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle, color: Colors.white),
-                          child: const Icon(
-                            Icons.edit,
-                            color: Colors.purpleAccent,
-                          ),
+                          decoration: const BoxDecoration(shape: BoxShape
+                              .rectangle, color: Colors.white),
+                          child:
+                          const Icon(Icons.edit, color: Colors.blue,),
                         ),
                       )
                     ],
@@ -65,11 +62,11 @@ class LeaderBoardState extends State<LeaderBoard> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     "Vishnu Vardhan",
                     style: TextStyle(
                         fontSize: 22,
-                        color: leaderProfileTextColor,
+                        color: Colors.white,
                         fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
@@ -89,29 +86,29 @@ class LeaderBoardState extends State<LeaderBoard> {
                       Column(
                         children: [
                           Text(
-                            "45",
+                            "54",
                             style: TextStyle(
-                                fontSize: 42,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.white.withOpacity(0.9)),
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white.withOpacity(1.0)),
                           ),
-                          const Text("Level",
+                          const Text("calories",
                               style: TextStyle(
-                                  fontSize: 19,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white)),
                         ],
                       ),
                       Column(
                         children: [
-                          Text("#335",
+                          Text("#33",
                               style: TextStyle(
-                                  fontSize: 42,
+                                  fontSize: 40,
                                   fontWeight: FontWeight.w300,
-                                  color: Colors.white.withOpacity(0.9))),
+                                  color: Colors.white.withOpacity(1.0))),
                           const Text("Rank",
                               style: TextStyle(
-                                  fontSize: 19,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white)),
                         ],
@@ -145,26 +142,24 @@ class LeaderBoardState extends State<LeaderBoard> {
                             SizedBox(
                               width: 3,
                             ),
-                            Text("Nagarjuna")
+                            Text("xxxxxx")
                           ],
                         ),
-                        leading: Text(
-                          "#${index + 1}",
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                        leading: Text("#${index + 1}",
+                          style: const TextStyle(fontWeight: FontWeight.bold),),
                         trailing: Text(
-                            "cal.${(2000 / (index + 1)).toString().substring(0, 5)}",
-                            style:
-                                const TextStyle(fontWeight: FontWeight.bold)),
+                            "cal.${(2500 / (index + 1)).toString().substring(0,
+                                5)}",
+                            style: const TextStyle(fontWeight: FontWeight
+                                .bold)),
                       );
                     },
                     separatorBuilder: (context, index) => const Divider(
-                          thickness: 1,
-                          color: Colors.purple,
-                          indent: 10,
-                          endIndent: 10,
-                        ),
-                    itemCount: 1),
+                      thickness: 1.5,
+                      color: Colors.blue,
+                      indent: 10,
+                      endIndent: 10,),
+                    itemCount: 20+1),
               ),
             )
           ],
