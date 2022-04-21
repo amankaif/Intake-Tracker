@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:calorie_tracker/widgets/widgets.dart';
+import 'package:calorie_tracker/screens/screens.dart';
 import 'package:calorie_tracker/ui_strings.dart';
+import 'package:calorie_tracker/models/models.dart';
 
 class LeaderBoard extends StatefulWidget {
   const LeaderBoard({Key? key}) : super(key: key);
@@ -12,11 +15,10 @@ class LeaderBoardState extends State<LeaderBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const NavBar(),
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back),
         actions: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.share)),
-          IconButton(onPressed: (){}, icon: const Icon(Icons.person_add)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
         ],
         title: const Text(
           "Leader_board",
@@ -26,12 +28,10 @@ class LeaderBoardState extends State<LeaderBoard> {
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
-
         child: Column(
           children: [
-
             Container(
-              padding: const EdgeInsets.only(top : 40),
+              padding: const EdgeInsets.only(top: 40),
               height: 330,
               decoration: BoxDecoration(
                   color: leaderProfileBackgroundColor,
@@ -52,7 +52,13 @@ class LeaderBoardState extends State<LeaderBoard> {
                         right: 0.0,
                         child: Container(
                           padding: const EdgeInsets.all(4),
-                          decoration: const BoxDecoration(shape: BoxShape.circle ,color: Colors.white),child: const Icon(Icons.edit,color: Colors.purpleAccent,),),
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.white),
+                          child: const Icon(
+                            Icons.edit,
+                            color: Colors.purpleAccent,
+                          ),
+                        ),
                       )
                     ],
                   ),
@@ -142,12 +148,22 @@ class LeaderBoardState extends State<LeaderBoard> {
                             Text("Nagarjuna")
                           ],
                         ),
-                        leading: Text("#${index + 1}" ,style: const TextStyle(fontWeight: FontWeight.bold),),
+                        leading: Text(
+                          "#${index + 1}",
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         trailing: Text(
-                            "cal.${(2000 / (index + 1)).toString().substring(0, 5)}",style: const TextStyle(fontWeight: FontWeight.bold)),
+                            "cal.${(2000 / (index + 1)).toString().substring(0, 5)}",
+                            style:
+                                const TextStyle(fontWeight: FontWeight.bold)),
                       );
                     },
-                    separatorBuilder: (context, index) => const Divider(thickness: 1,color: Colors.purple,indent: 10,endIndent: 10,),
+                    separatorBuilder: (context, index) => const Divider(
+                          thickness: 1,
+                          color: Colors.purple,
+                          indent: 10,
+                          endIndent: 10,
+                        ),
                     itemCount: 1),
               ),
             )
