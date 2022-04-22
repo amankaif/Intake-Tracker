@@ -6,7 +6,6 @@ import 'package:calorie_tracker/widgets/widgets.dart';
 // Multi Select widget
 // This widget is reusable
 
-
 // Implement a multi select on the Home screen
 class MealsPage extends StatefulWidget {
   const MealsPage({Key? key}) : super(key: key);

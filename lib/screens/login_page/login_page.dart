@@ -44,13 +44,11 @@ class LoginPage extends StatelessWidget {
                               width: double.infinity,
                               height: 50,
                               decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(20)
-                              ),
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(20)),
                               child: TextButton(
-                                onPressed: (){},
+                                onPressed: () {},
                                 child: Text("Login", style: inputTextStyle),
-
                               ),
                             ),
                           )

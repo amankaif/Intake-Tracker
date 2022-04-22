@@ -4,14 +4,16 @@ import 'package:calorie_tracker/screens/home_page/view/new_page_from_tap.dart';
 
 class CardWidget extends StatefulWidget {
   final CardItem item;
-  CardWidget({required this.item});
+  // ignore: use_key_in_widget_constructors
+  const CardWidget({required this.item});
   @override
   State<CardWidget> createState() => _CardWidgetState();
 }
 
 class _CardWidgetState extends State<CardWidget> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 200,
       child: Column(
         children: [
