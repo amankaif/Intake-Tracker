@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemCount: 4,
+            itemCount: items.length,
             //For giving space between each box
             separatorBuilder: (context, _) => const SizedBox(width: 12),
             //Iterates through each element from the items
