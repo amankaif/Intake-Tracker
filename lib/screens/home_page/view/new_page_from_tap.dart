@@ -25,7 +25,7 @@ class NewPage extends StatelessWidget {
             // children: breakfast.map((meals) => mealsCard(meals)).toList(),
             children: [
               AspectRatio(
-                aspectRatio: 4 / 3,
+                aspectRatio: 5 / 3,
                 child: Image.network(
                   item.urlImage,
                   fit: BoxFit.cover,
@@ -41,24 +41,17 @@ class NewPage extends StatelessWidget {
               ),
               // ignore: unnecessary_new
               new Container(
-                height: 300,
+                height: 350,
                 padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
                 child: ListView.separated(
                   // physics: allowI ,
                   scrollDirection: Axis.vertical,
                   itemCount: meals.length,
-                  separatorBuilder: (context, _) => const SizedBox(height: 12),
+                  separatorBuilder: (context, _) => const SizedBox(height: 10),
                   itemBuilder: (BuildContext context, int index) =>
                       CardDemoMeals(meal: meals[index]),
                 ),
               )
-              // Column(
-              //   children: [
-              //     CardDemoMeals(food: 'Dosa'),
-              //     CardDemoMeals(food: 'Dosa'),
-              //     // CardDemoMeals(food: 'Dosa'),
-              //   ],
-              // ),
             ],
           ),
         ),

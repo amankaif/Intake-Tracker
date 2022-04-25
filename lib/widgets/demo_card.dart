@@ -14,18 +14,6 @@ class CardDemoMeals extends StatefulWidget {
 class _CardDemoMealsState extends State<CardDemoMeals> {
   int _servings = 0;
 
-  void _increment() {
-    setState(() {
-      _servings++;
-    });
-  }
-
-  void _decrement() {
-    setState(() {
-      _servings--;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -40,35 +28,28 @@ class _CardDemoMealsState extends State<CardDemoMeals> {
               style: TextStyle(color: Colors.amber),
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.all(16.0),
-          //   child: Text(
-          //     'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
-          //     style: TextStyle(color: Colors.black.withOpacity(0.6)),
-          //   ),
-          // ),
           ButtonBar(
             alignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Servings: "),
+              const Text("Servings: "),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   FlatButton(
-                    textColor: const Color(0xFF6200EE),
+                    // textColor: const Color(0xFF6200EE),
                     onPressed: () {
-                      _decrement;
+                      setState(() => _servings--);
                     },
                     child: const Icon(Icons.remove_circle_outline),
                   ),
                   Text(
                     '$_servings',
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   ),
                   FlatButton(
-                      textColor: const Color(0xFF6200EE),
+                      // textColor: const Color(0xFF6200EE),
                       onPressed: () {
-                        _increment;
+                        setState(() => _servings++);
                       },
                       child: const Icon(Icons.add_circle_outline)),
                 ],
