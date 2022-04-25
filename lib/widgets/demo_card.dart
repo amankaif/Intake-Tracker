@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 
 class CardDemoMeals extends StatefulWidget {
   final MealsItems meal;
-  CardDemoMeals({Key? key, required this.meal}) : super(key: key);
+  List total;
+  CardDemoMeals({Key? key, required this.meal, required this.total})
+      : super(key: key);
 
   @override
   State<CardDemoMeals> createState() => _CardDemoMealsState();
@@ -38,7 +40,9 @@ class _CardDemoMealsState extends State<CardDemoMeals> {
                   FlatButton(
                     // textColor: const Color(0xFF6200EE),
                     onPressed: () {
-                      setState(() => _servings--);
+                      if (_servings > 0) {
+                        setState(() => _servings--);
+                      }
                     },
                     child: const Icon(Icons.remove_circle_outline),
                   ),
@@ -52,6 +56,12 @@ class _CardDemoMealsState extends State<CardDemoMeals> {
                         setState(() => _servings++);
                       },
                       child: const Icon(Icons.add_circle_outline)),
+                  FlatButton(
+                      // textColor: const Color(0xFF6200EE),
+                      onPressed: () {
+                        setState(() => _servings++);
+                      },
+                      child: const Icon(Icons.save)),
                 ],
               ),
             ],

@@ -25,7 +25,7 @@ class _CardWidgetState extends State<CardWidget> {
                     aspectRatio: 4 / 3,
                     child: Material(
                       child: Ink.image(
-                        image: NetworkImage(widget.item.urlImage),
+                        image: AssetImage(widget.item.urlImage),
                         fit: BoxFit.cover,
                         child: InkWell(
                           onTap: () {

@@ -77,6 +77,8 @@ flutter:
     - assets/images/bg_login.jpg
     - assets/images/bg.jpg
     - assets/images/cartoon.png
+    - assets/images/breakfast.jpg
+    - assets/images/snacks.jpg
 
    
   fonts:
