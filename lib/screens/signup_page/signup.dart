@@ -2,7 +2,7 @@ import 'package:calorie_tracker/supabase/authentication.notifier.dart';
 // import 'package:calorie_tracker/supabase_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../login_page/demo_login_page.dart';
+import '../login_page/view/demo_login_page.dart';
 
 class SignUpWidget extends StatefulWidget {
   const SignUpWidget({Key? key}) : super(key: key);

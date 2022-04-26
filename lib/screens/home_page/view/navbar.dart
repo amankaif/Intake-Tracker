@@ -38,8 +38,9 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.home),
             title: const Text('Home'),
-            onTap: () =>
-                {}, //on clicking this we can redirect or we can perform any action
+            onTap: () => {
+              Navigator.pushNamed(context, '/')
+            }, //on clicking this we can redirect or we can perform any action
           ),
           ListTile(
             leading: const Icon(Icons.leaderboard),

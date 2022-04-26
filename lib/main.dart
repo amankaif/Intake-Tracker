@@ -1,9 +1,7 @@
-import 'package:calorie_tracker/screens/login_page/demo_login_page.dart';
-import 'package:calorie_tracker/screens/screens.dart';
-
-import 'package:calorie_tracker/supabase/supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:calorie_tracker/screens/screens.dart';
+import 'package:calorie_tracker/supabase/supabase.dart';
 
 void main() {
   runApp(Core());
