@@ -41,11 +41,11 @@ class _MultiSelectState extends State<MultiSelect> {
         child: ListBody(
           children: widget.items
               .map((item) => CheckboxListTile(
-            value: _selectedItems.contains(item),
-            title: Text(item),
-            controlAffinity: ListTileControlAffinity.leading,
-            onChanged: (isChecked) => _itemChange(item, isChecked!),
-          ))
+                    value: _selectedItems.contains(item),
+                    title: Text(item),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    onChanged: (isChecked) => _itemChange(item, isChecked!),
+                  ))
               .toList(),
         ),
       ),
@@ -55,7 +55,7 @@ class _MultiSelectState extends State<MultiSelect> {
           onPressed: _cancel,
         ),
         ElevatedButton(
-          child: const Text('Submit'),
+          child: const Text('Ok'),
           onPressed: _submit,
         ),
       ],
