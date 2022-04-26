@@ -1,1 +1,1 @@
-// export 'lib/screens/leader_board_page/leaderpage.dart';
+export 'view/view.dart';
