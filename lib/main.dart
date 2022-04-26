@@ -1,3 +1,4 @@
+import 'package:calorie_tracker/screens/leader_board_page/leaderpage.dart';
 import 'package:flutter/material.dart';
 import 'package:calorie_tracker/screens/screens.dart';
 
