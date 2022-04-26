@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 const TextStyle headingStyle = TextStyle(
@@ -9,7 +8,7 @@ const TextStyle headingStyle = TextStyle(
     fontFamily: 'Inter'
 );
 
-TextStyle bodyTextStyle = TextStyle(
+TextStyle bodyTextStyle = const TextStyle(
     fontSize: 22,
     // color: Colors.blueGrey[400]?.withOpacity(0.5),
     color: Colors.white
