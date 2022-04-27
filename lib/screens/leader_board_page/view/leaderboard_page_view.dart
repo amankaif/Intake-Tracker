@@ -11,23 +11,23 @@ class LeaderBoardState extends State<LeaderBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(onPressed: () {
-          Navigator.pushNamed(context, '/');
-        },
-            icon: const Icon(Icons.arrow_back)),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
-        ],
-        title: const Text(
-          "Leader Board",
-          style: TextStyle(fontSize: 25),
-        ),
-        centerTitle: true,
-        elevation: 0.0,
-      ),
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //       onPressed: () {
+      //         Navigator.pushNamed(context, '/');
+      //       },
+      //       icon: const Icon(Icons.arrow_back)),
+      //   actions: [
+      //     IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
+      //   ],
+      //   title: const Text(
+      //     "Leader Board",
+      //     style: TextStyle(fontSize: 25),
+      //   ),
+      //   centerTitle: true,
+      //   elevation: 0.0,
+      // ),
       body: SingleChildScrollView(
-
         child: Column(
           children: [
             Container(
@@ -52,10 +52,12 @@ class LeaderBoardState extends State<LeaderBoard> {
                         right: 0.0,
                         child: Container(
                           padding: const EdgeInsets.all(4),
-                          decoration: const BoxDecoration(shape: BoxShape
-                              .rectangle, color: Colors.white),
-                          child:
-                          const Icon(Icons.edit, color: Colors.blue,),
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.rectangle, color: Colors.white),
+                          child: const Icon(
+                            Icons.edit,
+                            color: Colors.blue,
+                          ),
                         ),
                       )
                     ],
@@ -149,21 +151,23 @@ class LeaderBoardState extends State<LeaderBoard> {
                             Text("xxxxxx")
                           ],
                         ),
-                        leading: Text("#${index + 1}",
-                          style: const TextStyle(fontWeight: FontWeight.bold),),
+                        leading: Text(
+                          "#${index + 1}",
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         trailing: Text(
-                            "cal.${(2500 / (index + 1)).toString().substring(0,
-                                5)}",
-                            style: const TextStyle(fontWeight: FontWeight
-                                .bold)),
+                            "cal.${(2500 / (index + 1)).toString().substring(0, 5)}",
+                            style:
+                                const TextStyle(fontWeight: FontWeight.bold)),
                       );
                     },
                     separatorBuilder: (context, index) => const Divider(
-                      thickness: 1.5,
-                      color: Colors.blue,
-                      indent: 10,
-                      endIndent: 10,),
-                    itemCount: 20+1),
+                          thickness: 1.5,
+                          color: Colors.blue,
+                          indent: 10,
+                          endIndent: 10,
+                        ),
+                    itemCount: 20 + 1),
               ),
             )
           ],

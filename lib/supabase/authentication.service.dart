@@ -44,7 +44,8 @@ class AuthenticationService {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("LogIn successful: $email")));
       // ignore: avoid_print
-      print("LogIn Successful: $userEmail");
+      // print("LogIn Successful: $userEmail");
+      Navigator.pushNamed(context, '.');
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("LogIn failed: ${response.error!.message}")));
