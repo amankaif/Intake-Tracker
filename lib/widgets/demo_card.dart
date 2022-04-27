@@ -15,6 +15,7 @@ class CardDemoMeals extends StatefulWidget {
 
 class _CardDemoMealsState extends State<CardDemoMeals> {
   int _servings = 0;
+  int _state = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class _CardDemoMealsState extends State<CardDemoMeals> {
                   FlatButton(
                     // textColor: const Color(0xFF6200EE),
                     onPressed: () {
-                      if (_servings > 0) {
+                      if (_servings > 0 && _state == 0) {
                         setState(() => _servings--);
                       }
                     },
@@ -53,13 +54,18 @@ class _CardDemoMealsState extends State<CardDemoMeals> {
                   FlatButton(
                       // textColor: const Color(0xFF6200EE),
                       onPressed: () {
-                        setState(() => _servings++);
+                        if (_state == 0) {
+                          setState(() => _servings++);
+                        }
                       },
                       child: const Icon(Icons.add_circle_outline)),
                   FlatButton(
                       // textColor: const Color(0xFF6200EE),
                       onPressed: () {
-                        setState(() => _servings++);
+                        _state = 1;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Counter Locked :)")));
+                        // setState(() => _servings++);
                       },
                       child: const Icon(Icons.save)),
                 ],
