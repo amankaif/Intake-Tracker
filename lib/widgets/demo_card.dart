@@ -62,9 +62,16 @@ class _CardDemoMealsState extends State<CardDemoMeals> {
                   FlatButton(
                       // textColor: const Color(0xFF6200EE),
                       onPressed: () {
-                        _state = 1;
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Counter Locked :)")));
+                        if (_state == 0) {
+                          _state = 1;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Counter Locked :)")));
+                        } else {
+                          _state = 0;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Counter Unlocked :)")));
+                        }
+
                         // setState(() => _servings++);
                       },
                       child: const Icon(Icons.save)),
