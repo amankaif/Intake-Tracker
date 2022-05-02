@@ -12,7 +12,13 @@ Future<void> main() async {
       url: "https://qtxfymhhhqauonnzqvpw.supabase.co",
       anonKey:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0eGZ5bWhoaHFhdW9ubnpxdnB3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTA1NTI1MTAsImV4cCI6MTk2NjEyODUxMH0.oxl9TMBh2bXh7CC_oBfFmIdONFod5X8QOtpY8Y7OWLU');
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(Core());
+
+  // await Supabase.initialize(
+  //   url: '[https://bougcsiwnimbmnmvwjlb.supabase.co]',
+  //   anonKey: '[eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0Mzc5NzQyOCwiZXhwIjoxOTU5MzczNDI4fQ.Ac5s-ZOyUV-2rRoP_GUuPvdt7tGNocCSq-LU-ZtBVqQ]',
+  // );
 }
 
 class Core extends StatelessWidget {
