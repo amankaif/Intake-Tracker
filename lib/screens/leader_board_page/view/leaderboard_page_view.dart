@@ -8,25 +8,48 @@ class LeaderBoard extends StatefulWidget {
 }
 
 class LeaderBoardState extends State<LeaderBoard> {
+  final List items = [
+    {
+      'name': "Rohit",
+      'calories': 2000,
+    },
+    {
+      'name': "Satya",
+      'calories': 6000,
+    },
+    {
+      'name': "Harsh",
+      'calories': 1000,
+    },
+    {
+      'name': "Pankaj",
+      'calories': 3000,
+    },
+    {
+      'name': "Ashu",
+      'calories': 10000,
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   leading: IconButton(
-      //       onPressed: () {
-      //         Navigator.pushNamed(context, '/');
-      //       },
-      //       icon: const Icon(Icons.arrow_back)),
-      //   actions: [
-      //     IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
-      //   ],
-      //   title: const Text(
-      //     "Leader Board",
-      //     style: TextStyle(fontSize: 25),
-      //   ),
-      //   centerTitle: true,
-      //   elevation: 0.0,
-      // ),
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            },
+            icon: const Icon(Icons.arrow_back)),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
+        ],
+        title: const Text(
+          "Leader Board",
+          style: TextStyle(fontSize: 25),
+        ),
+        centerTitle: true,
+        elevation: 0.0,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -140,23 +163,22 @@ class LeaderBoardState extends State<LeaderBoard> {
                     itemBuilder: (context, index) {
                       return ListTile(
                         title: Row(
-                          children: const [
-                            CircleAvatar(
+                          children: [
+                            const CircleAvatar(
                               backgroundImage: NetworkImage(
                                   "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=580&q=80"),
                             ),
-                            SizedBox(
-                              width: 3,
+                            const SizedBox(
+                              width: 20,
                             ),
-                            Text("xxxxxx")
+                            Text(items[index]['name'])
                           ],
                         ),
                         leading: Text(
                           "#${index + 1}",
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        trailing: Text(
-                            "cal.${(2500 / (index + 1)).toString().substring(0, 5)}",
+                        trailing: Text(items[index]['calories'].toString(),
                             style:
                                 const TextStyle(fontWeight: FontWeight.bold)),
                       );
@@ -167,7 +189,7 @@ class LeaderBoardState extends State<LeaderBoard> {
                           indent: 10,
                           endIndent: 10,
                         ),
-                    itemCount: 20 + 1),
+                    itemCount: items.length),
               ),
             )
           ],
