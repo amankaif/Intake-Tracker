@@ -1,4 +1,4 @@
-export 'app.provider.dart';
-export 'authentication.notifier.dart';
-export 'authentication.service.dart';
+export '../core/provider/app.provider.dart';
+export '../core/notifier/authentication.notifier.dart';
+export '../core/service/authentication.service.dart';
 export 'supabase.credentials.dart';

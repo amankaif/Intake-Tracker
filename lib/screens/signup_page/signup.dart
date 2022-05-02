@@ -1,4 +1,4 @@
-import 'package:calorie_tracker/supabase/authentication.notifier.dart';
+import 'package:calorie_tracker/core/notifier/authentication.notifier.dart';
 // import 'package:calorie_tracker/supabase_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

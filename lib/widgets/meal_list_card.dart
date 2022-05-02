@@ -1,14 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:calorie_tracker/core/models_db/fooditems.odel.dart';
 import 'package:calorie_tracker/models/meals_data.dart';
 import 'package:flutter/material.dart';
 
 class CardDemoMeals extends StatefulWidget {
-  final MealsItems meal;
-  List total;
-  CardDemoMeals({Key? key, required this.meal, required this.total})
-      : super(key: key);
-
+  CardDemoMeals({Key? key, required this.name}) : super(key: key);
+  var name;
   @override
   State<CardDemoMeals> createState() => _CardDemoMealsState();
 }
@@ -17,6 +15,7 @@ class _CardDemoMealsState extends State<CardDemoMeals> {
   int _servings = 0;
   int _state = 0;
 
+  // String name = widget.name;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -25,11 +24,15 @@ class _CardDemoMealsState extends State<CardDemoMeals> {
         children: [
           const ListTile(
             leading: Icon(Icons.food_bank),
-            title: Text('Dosa'),
-            subtitle: Text(
-              'Dosa is very famous in Andhra Pradesh',
-              style: TextStyle(color: Colors.amber),
-            ),
+            // title: Text(widget.name),
+            // subtitle: Text(
+            //   'Dosa is very famous in Andhra Pradesh',
+            //   style: TextStyle(color: Colors.amber),
+            // ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(widget.name),
           ),
           ButtonBar(
             alignment: MainAxisAlignment.spaceBetween,
@@ -64,12 +67,24 @@ class _CardDemoMealsState extends State<CardDemoMeals> {
                       onPressed: () {
                         if (_state == 0) {
                           _state = 1;
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text("Counter Locked :)")));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            duration: Duration(seconds: 2),
+                            content: Text("Counter Locked :)"),
+                            shape: StadiumBorder(),
+                            behavior: SnackBarBehavior.floating,
+                            margin: EdgeInsets.all(10),
+                          ));
                         } else {
                           _state = 0;
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text("Counter Unlocked :)")));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                              "Counter Unlocked :)",
+                            ),
+                            duration: Duration(seconds: 2),
+                            shape: StadiumBorder(),
+                            behavior: SnackBarBehavior.floating,
+                            margin: EdgeInsets.all(10),
+                          ));
                         }
 
                         // setState(() => _servings++);

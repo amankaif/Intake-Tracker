@@ -42,7 +42,7 @@ class _BottomNavigationBar_State extends State<BottomNavigationBar_> {
         child: NavigationBar(
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           selectedIndex: index,
-          animationDuration: const Duration(seconds: 2),
+          animationDuration: const Duration(seconds: 1),
           onDestinationSelected: (index) => setState(() {
             this.index = index;
           }),

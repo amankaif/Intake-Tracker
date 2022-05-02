@@ -1,8 +1,7 @@
 // import 'package:calorie_tracker/supabase_manager.dart';
 
-import 'package:calorie_tracker/screens/home_page/view/home_screen.dart';
 import 'package:calorie_tracker/screens/signup_page/signup.dart';
-import 'package:calorie_tracker/supabase/authentication.notifier.dart';
+import 'package:calorie_tracker/core/notifier/authentication.notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

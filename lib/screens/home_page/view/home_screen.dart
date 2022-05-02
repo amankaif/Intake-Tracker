@@ -1,10 +1,8 @@
-import 'package:calorie_tracker/screens/home_page/view/navbar.dart';
-import 'package:calorie_tracker/widgets/bottom_navigationbar.dart';
+import 'package:calorie_tracker/core/notifier/database.notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:calorie_tracker/widgets/widgets.dart';
-import 'package:calorie_tracker/ui_strings.dart';
 import 'package:calorie_tracker/models/models.dart';
-import 'package:calorie_tracker/models/screens_data.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final DataBaseNotifier dataBaseNotifier =
+        Provider.of<DataBaseNotifier>(context, listen: false);
     return Scaffold(
       // drawer: const NavBar(),
 
@@ -35,7 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
           )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, 'meals');
+          // dataBaseNotifier.fetchFooditems();
+          // getFood();
+
+          // Navigator.pushNamed(context, 'meals');
         },
         child: const Icon(Icons.restaurant),
 

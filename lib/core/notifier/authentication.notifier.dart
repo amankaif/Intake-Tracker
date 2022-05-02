@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 
-import 'package:calorie_tracker/supabase/authentication.service.dart';
+import 'package:calorie_tracker/core/service/authentication.service.dart';
 import 'package:flutter/material.dart';
 
 class AuthenticationNotifier extends ChangeNotifier {
@@ -12,7 +12,7 @@ class AuthenticationNotifier extends ChangeNotifier {
       required BuildContext context}) async {
     try {
       await _authenticationService.signUp(
-          context: context, email: email, password: password);
+          context: context, email: email, password: password, );
     } catch (e) {
       print(e);
     }
@@ -20,7 +20,7 @@ class AuthenticationNotifier extends ChangeNotifier {
   }
 
   Future<String?> login(
-      {required String email,
+     {required String email,
       required String password,
       required BuildContext context}) async {
     try {

@@ -3,9 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:calorie_tracker/screens/screens.dart';
 import 'package:calorie_tracker/supabase/supabase.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
-  runApp(const Core());
+// SupabaseCredentials supabase = SupabaseCredentials();
+
+Future<void> main() async {
+  await Supabase.initialize(
+      url: "https://qtxfymhhhqauonnzqvpw.supabase.co",
+      anonKey:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0eGZ5bWhoaHFhdW9ubnpxdnB3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTA1NTI1MTAsImV4cCI6MTk2NjEyODUxMH0.oxl9TMBh2bXh7CC_oBfFmIdONFod5X8QOtpY8Y7OWLU');
+  runApp(Core());
 }
 
 class Core extends StatelessWidget {
@@ -28,7 +35,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // The initialRoute will and can be changed by people for
       // testing purposes to start the app to the screen they want to test.
-      initialRoute: 'demo_login',
+      initialRoute: '.',
       routes: {
         '/': (context) => const HomeScreen(),
         'login': (context) => const LoginPage(),

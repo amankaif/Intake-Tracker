@@ -2,11 +2,33 @@
 
 import 'package:flutter/material.dart';
 import 'package:supabase/supabase.dart';
-import 'supabase.credentials.dart';
+import '../../supabase/supabase.credentials.dart';
 // import 'supabase.credentials.dart';
+
+// class AuthenticationService {
+//   final _logger = Logger();
+//   final _localStorageService = locator<LocalStorageService>();
+
+//   AppUser? _user = null;
+//   AppUser? get user => _user;
+//   bool get hasUser => _user != null;
+
+//   Future<void> initialize() async {}
+
+//   Future<AppUser?> signIn({required AuthDto payload}) async {}
+
+//   Future<AppUser?> signUp({required AuthDto payload}) async {}
+
+//   Future<void> signOut() async {}
+
+//   Future<AppUser?> fetchUser({required String id}) async {}
+
+//   Future<PostgrestResponse> _createUser(User user, AuthDto payload) {}
+// }
 
 class AuthenticationService {
   SupabaseCredentials supabaseCredentials = SupabaseCredentials();
+
   Future<String?> signUp({
     required String email,
     required String password,
@@ -54,4 +76,14 @@ class AuthenticationService {
     }
     return null;
   }
+
+  Future<String?> _signOut() async {
+    final response = await supabaseCredentials.supabaseClient.auth.signOut();
+    final error = response.error;
+    if (error != null) {
+      // ScaffoldMessenger.of(context)
+      //     .showSnackBar(SnackBar(content: Text("LogOUt successful")));
+    }
+  }
+
 }
