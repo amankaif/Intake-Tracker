@@ -15,14 +15,15 @@ class _CardWidgetState extends State<CardWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 200,
+      // width: 200,
+      height: 175,
       child: Column(
         children: [
           Expanded(
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
                 child: AspectRatio(
-                    aspectRatio: 4 / 3,
+                    aspectRatio: 10 / 3,
                     child: Material(
                       child: Ink.image(
                         image: AssetImage(widget.item.urlImage),

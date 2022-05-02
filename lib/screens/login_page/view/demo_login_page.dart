@@ -1,7 +1,7 @@
 // import 'package:calorie_tracker/supabase_manager.dart';
 
 import 'package:calorie_tracker/screens/signup_page/signup.dart';
-import 'package:calorie_tracker/supabase/authentication.notifier.dart';
+import 'package:calorie_tracker/core/notifier/authentication.notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -79,19 +79,14 @@ class _LoginDemoState extends State<LoginDemo> {
               child: TextButton(
                 onPressed: () async {
                   // ignore: avoid_print
-                  print("Clicked");
+                  // print("Clicked");
                   String email = _email.text;
                   String password = _password.text;
 
                   if (email.isNotEmpty && password.isNotEmpty) {
                     await authenticationNotifier.login(
                         context: context, email: email, password: password);
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (_) => const HomeScreen(),
-                    //   ),
-                    // );
+                    
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text("Fill the details")));
