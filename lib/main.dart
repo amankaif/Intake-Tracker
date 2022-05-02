@@ -3,8 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:calorie_tracker/screens/screens.dart';
 import 'package:calorie_tracker/supabase/supabase.dart';
 
-void main() {
-  runApp(Core());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // await Supabase.initialize(
+  //   url: '[https://bougcsiwnimbmnmvwjlb.supabase.co]',
+  //   anonKey: '[eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0Mzc5NzQyOCwiZXhwIjoxOTU5MzczNDI4fQ.Ac5s-ZOyUV-2rRoP_GUuPvdt7tGNocCSq-LU-ZtBVqQ]',
+  // );
+  runApp(const Core());
 }
 
 class Core extends StatelessWidget {
@@ -14,15 +20,14 @@ class Core extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      child: const MyApp(),
+      child: MyApp(),
       providers: AppProviders.providers,
     );
   }
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,6 +42,7 @@ class MyApp extends StatelessWidget {
         'demo_login': (context) => const LoginDemo(),
       },
       debugShowCheckedModeBanner: false,
+
       // home: HomeScreen(),
     );
   }
