@@ -10,24 +10,44 @@ class LeaderBoard extends StatefulWidget {
 class LeaderBoardState extends State<LeaderBoard> {
   final List items = [
     {
-      'name': "Rohit",
-      'calories': 2000,
+      'name': "Ashish",
+      'calories': 2700,
     },
     {
       'name': "Satya",
-      'calories': 6000,
+      'calories': 2500,
     },
     {
       'name': "Harsh",
-      'calories': 1000,
+      'calories': 2300,
     },
     {
-      'name': "Pankaj",
-      'calories': 3000,
+      'name': "Vishnu",
+      'calories': 1950,
     },
     {
-      'name': "Ashu",
-      'calories': 10000,
+      'name': "Venkat",
+      'calories': 1885,
+    },
+    {
+      'name': "Om",
+      'calories': 1850,
+    },
+    {
+      'name': "Asif",
+      'calories': 1790,
+    },
+    {
+      'name': "Aman",
+      'calories': 1720,
+    },
+    {
+      'name': "Abhishek",
+      'calories': 1670,
+    },
+    {
+      'name': "Arjun",
+      'calories': 1620,
     },
   ];
 
@@ -180,15 +200,15 @@ class LeaderBoardState extends State<LeaderBoard> {
                         ),
                         trailing: Text(items[index]['calories'].toString(),
                             style:
-                                const TextStyle(fontWeight: FontWeight.bold)),
+                            const TextStyle(fontWeight: FontWeight.bold)),
                       );
                     },
                     separatorBuilder: (context, index) => const Divider(
-                          thickness: 1.5,
-                          color: Colors.blue,
-                          indent: 10,
-                          endIndent: 10,
-                        ),
+                      thickness: 1.5,
+                      color: Colors.blue,
+                      indent: 10,
+                      endIndent: 10,
+                    ),
                     itemCount: items.length),
               ),
             )
