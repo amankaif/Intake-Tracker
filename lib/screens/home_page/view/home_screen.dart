@@ -37,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
           )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          Navigator.pushNamed(context, 'meals');
           // dataBaseNotifier.fetchFooditems();
           // getFood();
 
