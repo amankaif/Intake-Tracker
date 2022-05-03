@@ -1,6 +1,6 @@
 import 'package:calorie_tracker/supabase/supabase.credentials.dart';
 import 'package:supabase/supabase.dart';
-import 'package:calorie_tracker/core/db_data/db_data.dart';
+import 'package:calorie_tracker/core/persistent_data/persistent_data.dart';
 
 class DatabaseService {
   SupabaseCredentials supabaseCredentials = SupabaseCredentials();

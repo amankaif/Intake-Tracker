@@ -41,14 +41,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // The initialRoute will and can be changed by people for
       // testing purposes to start the app to the screen they want to test.
-      initialRoute: '.',
+      initialRoute: 'demo_login',
       routes: {
+        '.': (context) => BottomNavigationBar_(),
         '/': (context) => const HomeScreen(),
         'login': (context) => const LoginPage(),
         'leader_board': (context) => const LeaderBoard(),
         'meals': (context) => const MealsPage(),
         'demo_login': (context) => const LoginDemo(),
-        '.': (context) => BottomNavigationBar_(),
         'splash': (context) => const SplashPage(),
       },
       debugShowCheckedModeBanner: false,
