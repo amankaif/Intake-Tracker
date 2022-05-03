@@ -19,8 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
     final DataBaseNotifier dataBaseNotifier =
         Provider.of<DataBaseNotifier>(context, listen: false);
     return Scaffold(
-      drawer: const NavBar(),
-      
+      // drawer: const NavBar(),
+
       // ignore: prefer_const_literals_to_create_immutables
 
       body: Container(

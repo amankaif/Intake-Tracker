@@ -25,7 +25,7 @@ class _BottomNavigationBar_State extends State<BottomNavigationBar_> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: displayedDayDateString,
+        title: Text(today),
         automaticallyImplyLeading: false,
         centerTitle: true,
         elevation: 0.0,

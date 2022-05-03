@@ -5,13 +5,16 @@ import 'package:calorie_tracker/core/db_data/db_data.dart';
 class DatabaseService {
   SupabaseCredentials supabaseCredentials = SupabaseCredentials();
   //fetch data
-  Future fetchFooditems() async {
+  Future fetchFooditems({required String f_day, required String f_time}) async {
     try {
       var response = await supabaseCredentials.supabaseClient
           .from("food_items")
           .select()
+          .eq('f_day', f_day.toLowerCase())
+          .eq('f_meal_time', f_time.toLowerCase())
           .execute();
       var data = response.data;
+      // print(data);
       return data;
     } catch (e) {
       print(e.toString());

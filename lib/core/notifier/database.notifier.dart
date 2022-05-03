@@ -10,12 +10,18 @@ import 'package:calorie_tracker/core/db_data/db_data.dart';
 
 class DataBaseNotifier extends ChangeNotifier {
   final DatabaseService _databaseService = DatabaseService();
-  Future fetchFooditems() async {
-    List data = await _databaseService.fetchFooditems();
-    return data.map((fooditem) => FoodItems.fromJson(fooditem)).toList();
+  late String _day;
+  late String _time;
+
+  Future fetchFooditems({required String f_day, required String f_time}) async {
+    _day = f_day;
+    _time = f_time;
+    // print(_day);
+    var data =
+        await _databaseService.fetchFooditems(f_day: _day, f_time: _time);
     // print(data);
-    // FoodItems modelledData = FoodItems.fromJson((data));
-    // return modelledData;
+    return data.map((fooditem) => FoodItems.fromJson(fooditem)).toList();
+    //
   }
 
   Future fetchMealsPageItems() async {

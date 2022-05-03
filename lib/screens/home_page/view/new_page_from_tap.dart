@@ -1,6 +1,7 @@
 import 'package:calorie_tracker/core/models_db/fooditems.odel.dart';
 import 'package:calorie_tracker/core/notifier/database.notifier.dart';
 import 'package:calorie_tracker/models/models.dart';
+import 'package:calorie_tracker/ui_strings.dart';
 import 'package:calorie_tracker/widgets/meal_list_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -47,7 +48,10 @@ class NewPage extends StatelessWidget {
               height: 400,
               padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
               child: FutureBuilder(
-                future: dataBaseNotifier.fetchFooditems(),
+                future: dataBaseNotifier.fetchFooditems(
+                  f_day: today.toLowerCase(),
+                  f_time: item.title.toLowerCase(),
+                ),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Row(
