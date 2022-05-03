@@ -2,8 +2,11 @@
 
 import 'package:calorie_tracker/screens/signup_page/signup.dart';
 import 'package:calorie_tracker/core/notifier/authentication.notifier.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase/supabase.dart' hide Provider;
+import 'package:calorie_tracker/ui_strings.dart';
 
 class LoginDemo extends StatefulWidget {
   const LoginDemo({Key? key}) : super(key: key);
@@ -12,9 +15,48 @@ class LoginDemo extends StatefulWidget {
   _LoginDemoState createState() => _LoginDemoState();
 }
 
+
 class _LoginDemoState extends State<LoginDemo> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+
+  bool _isLoading = false;
+  late final TextEditingController _emailController;
+
+  Future<void> _signIn() async {
+    setState(() {
+      _isLoading = true;
+    });
+    final response = await supabase.auth.signIn(
+        email: _emailController.text,
+        options: AuthOptions(
+            redirectTo: kIsWeb
+                ? null
+                : 'io.supabase.flutterquickstart://login-callback/'));
+    final error = response.error;
+    if (error != null) {
+      context.showErrorSnackBar(message: error.message);
+    } else {
+      context.showSnackBar(message: 'Check your email for login link!');
+      _emailController.clear();
+    }
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

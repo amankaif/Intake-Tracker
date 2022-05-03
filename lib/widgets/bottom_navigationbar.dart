@@ -1,3 +1,4 @@
+import 'package:calorie_tracker/screens/home_page/view/Navbar.dart';
 import 'package:calorie_tracker/screens/home_page/view/home_screen.dart';
 import 'package:calorie_tracker/screens/leader_board_page/view/leaderboard_page_view.dart';
 import 'package:calorie_tracker/ui_strings.dart';
@@ -33,6 +34,7 @@ class _BottomNavigationBar_State extends State<BottomNavigationBar_> {
         ],
         // backgroundColor: Colors.green,
       ),
+      drawer: const NavBar(),
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(

@@ -49,6 +49,7 @@ class MyApp extends StatelessWidget {
         'meals': (context) => const MealsPage(),
         'demo_login': (context) => const LoginDemo(),
         '.': (context) => BottomNavigationBar_(),
+        'splash': (context) => const SplashPage(),
       },
       debugShowCheckedModeBanner: false,
 
