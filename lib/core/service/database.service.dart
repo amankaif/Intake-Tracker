@@ -25,19 +25,29 @@ class DatabaseService {
   
 
   Future fetchLeaderboardEntries() async {
-    if (QueryResults.haveLeaderboardEntriesPulled) {
-      return [];
-    }
     try {
       var responseLeaderboard = await supabaseCredentials.supabaseClient
           .from("leaderboard")
           .select("""
-id, name:user_details(name), total_calories""").execute();
+id, name:user_details(name), total_calories""")
+          .order('total_calories', ascending: false)
+          .limit(10)
+          .execute();
       var dataLeaderboard = responseLeaderboard.data;
-      // print(dataNescafe);
-      // print(dataHod);
-      // print(dataTuck);
-      return;
+
+      var rankList = dataLeaderboard.map((entry) => entry["id"]).toList();
+      QueryResults.leaderboardUserRank =
+          rankList.indexOf(QueryResults.userId) + 1;
+
+      var temp = await supabaseCredentials.supabaseClient
+          .from("leaderboard")
+          .select("total_calories")
+          .eq("id", QueryResults.userId)
+          .execute();
+      var tempData = temp.data;
+      QueryResults.leadboardUserCalorieCount = tempData[0]["total_calories"];
+
+      return dataLeaderboard;
     } catch (e) {
       print(e.toString());
     }

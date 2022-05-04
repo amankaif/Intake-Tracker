@@ -32,12 +32,12 @@ class DataBaseNotifier extends ChangeNotifier {
   }
 
   Future fetchLeaderboardEntries() async {
-    List entryList = await _databaseService.fetchLeaderboardEntries();
+    dynamic entryList = await _databaseService.fetchLeaderboardEntries();
     // return outletList;
-    if (QueryResults.haveLeaderboardEntriesPulled) {
-    } else {
-      QueryResults.entryList = entryList;
-    }
+
+    QueryResults.entryList = entryList;
+    QueryResults.haveLeaderboardEntriesPulled = true;
+
     // return data.map((fooditem) => FoodItems.fromJson(fooditem)).toList();
     // print(data);
     // FoodItems modelledData = FoodItems.fromJson((data));
