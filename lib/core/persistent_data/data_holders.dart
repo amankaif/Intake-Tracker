@@ -7,9 +7,10 @@ import 'package:calorie_tracker/widgets/bottom_navigationbar.dart';
 
 class QueryResults {
   static dynamic outletList;
-  static dynamic entryList;
+  static dynamic entryList = [];
   static bool haveMealItemsPulled = false;
   static bool haveLeaderboardEntriesPulled = false;
+  static late int leadboardUserCalorieCount;
   static late String userId;
   static String userName = "Name not provided during registration";
 

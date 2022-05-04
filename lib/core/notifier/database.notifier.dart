@@ -1,4 +1,3 @@
-
 import 'package:calorie_tracker/core/models_db/fooditems.odel.dart';
 import 'package:calorie_tracker/core/service/database.service.dart';
 import 'package:flutter/material.dart';
@@ -24,20 +23,18 @@ class DataBaseNotifier extends ChangeNotifier {
     //
   }
 
-
   Future fetchLeaderboardEntries() async {
-    List entryList = await _databaseService.fetchLeaderboardEntries();
+    dynamic entryList = await _databaseService.fetchLeaderboardEntries();
     // return outletList;
-    if (QueryResults.haveLeaderboardEntriesPulled) {
-    } else {
-      QueryResults.entryList = entryList;
-    }
+
+    QueryResults.entryList = entryList;
+    QueryResults.haveLeaderboardEntriesPulled = true;
+
     // return data.map((fooditem) => FoodItems.fromJson(fooditem)).toList();
     // print(data);
     // FoodItems modelledData = FoodItems.fromJson((data));
     // return modelledData;
   }
-
 
   Future fetchMealsPageItems() async {
     List outletList = await _databaseService.fetchMealsPageItems();
@@ -53,7 +50,7 @@ class DataBaseNotifier extends ChangeNotifier {
   }
 
   Future<PostgrestResponse?> addConsumption(
-      {required int fid,required String id, required int c_servings}) async {
+      {required int fid, required String id, required int c_servings}) async {
     _serving = c_servings;
     _id = id;
     _fid = fid;
