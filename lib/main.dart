@@ -42,8 +42,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // The initialRoute will and can be changed by people for
       // testing purposes to start the app to the screen they want to test.
-      restorationScopeId: 'root',
-      initialRoute: '.',
+      initialRoute: 'demo_login',
       routes: {
         '.': (context) => BottomNavigationBar_(),
         '/': (context) => const HomeScreen(),

@@ -93,7 +93,8 @@ class NewPage extends StatelessWidget {
                 onPressed: () {
                   print(sendData.count);
                   print(sendData.id);
-                  print("UserId: ${userId}");
+                  print("UserId: ${QueryResults.userId}");
+
                   print("Time:${formattedDate}");
                   dataBaseNotifier.addConsumption(
                       c_servings: sendData.count,

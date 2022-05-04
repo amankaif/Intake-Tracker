@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:calorie_tracker/screens/history_page/history_page_data.dart';
 
 class CardDemoMeals extends StatefulWidget {
-  CardDemoMeals({Key? key, int?this.id,  String?this.name,required this.data})
+  CardDemoMeals({Key? key,required this.id, required this.name, required this.data})
       : super(key: key);
   var name;
   var id;
