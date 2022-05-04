@@ -3,7 +3,7 @@ import 'package:calorie_tracker/core/models_db/fooditems.odel.dart';
 import 'package:calorie_tracker/core/service/database.service.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:calorie_tracker/core/db_data/db_data.dart';
+import 'package:calorie_tracker/core/persistent_data/persistent_data.dart';
 
 class DataBaseNotifier extends ChangeNotifier {
   final DatabaseService _databaseService = DatabaseService();

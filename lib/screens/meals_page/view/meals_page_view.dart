@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:calorie_tracker/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:calorie_tracker/core/notifier/notifier.dart';
-import 'package:calorie_tracker/core/db_data/db_data.dart';
+import 'package:calorie_tracker/core/persistent_data/persistent_data.dart';
 
 // Multi Select widget
 // This widget is reusable
@@ -21,7 +21,7 @@ class MealsPage extends StatefulWidget {
 }
 
 class _MealsPageState extends State<MealsPage> {
-  List<String> _selectedItems = [];
+  var _selectedItems = [];
 
   void _showMultiSelectNescafe(_nescafeItems) async {
     // a list of selectable items
@@ -35,7 +35,7 @@ class _MealsPageState extends State<MealsPage> {
     //   'Cofee'
     // ];
 
-    final List<String>? results = await showDialog(
+    final dynamic results = await showDialog(
       context: context,
       builder: (BuildContext context) {
         return MultiSelect(items: _nescafeItems);
@@ -62,7 +62,7 @@ class _MealsPageState extends State<MealsPage> {
     //   'Chicken Maggi'
     // ];
 
-    final List<String>? results = await showDialog(
+    final dynamic results = await showDialog(
       context: context,
       builder: (BuildContext context) {
         return MultiSelect(items: _hodItems);
@@ -89,7 +89,7 @@ class _MealsPageState extends State<MealsPage> {
     //   'Ice creams'
     // ];
 
-    final List<String>? results = await showDialog(
+    final dynamic results = await showDialog(
       context: context,
       builder: (BuildContext context) {
         return MultiSelect(items: _tuckShopItems);
@@ -149,137 +149,149 @@ class _MealsPageState extends State<MealsPage> {
                 return Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Row(mainAxisSize: MainAxisSize.max, children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(15, 30, 0, 0),
-                        child: Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.white,
-                          elevation: 15,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Padding(
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                25, 30, 20, 30),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  // use this button to open the multi-select dialog
-                                  ElevatedButton(
-                                    child: const Text('Nescafe',
-                                        style: TextStyle(fontSize: 20)),
-                                    style: ElevatedButton.styleFrom(
-                                      primary:
-                                          Theme.of(context).backgroundColor,
-                                      minimumSize: const Size(100, 40),
-                                    ),
-                                    onPressed: () =>
-                                        _showMultiSelectNescafe(outletList[0]),
-                                  ),
-                                ]),
+                                15, 30, 0, 0),
+                            child: Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: Colors.white,
+                              elevation: 15,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    25, 30, 20, 30),
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // use this button to open the multi-select dialog
+                                      ElevatedButton(
+                                        child: const Text('Nescafe',
+                                            style: TextStyle(fontSize: 20)),
+                                        style: ElevatedButton.styleFrom(
+                                          primary:
+                                              Theme.of(context).backgroundColor,
+                                          minimumSize: const Size(100, 40),
+                                        ),
+                                        onPressed: () =>
+                                            _showMultiSelectNescafe(
+                                                outletList[0]),
+                                      ),
+                                    ]),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(35, 30, 0, 0),
-                        child: Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.white,
-                          elevation: 15,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Padding(
+                          Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                40, 30, 30, 30),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  // use this button to open the multi-select dialog
-                                  ElevatedButton(
-                                    child: const Text('HOD',
-                                        style: TextStyle(fontSize: 18)),
-                                    style: ElevatedButton.styleFrom(
-                                      primary:
-                                          Theme.of(context).backgroundColor,
-                                      minimumSize: const Size(80, 40),
-                                    ),
-                                    onPressed: () =>
-                                        _showMultiSelectHod(outletList[1]),
-                                  ),
-                                ]),
+                                35, 30, 0, 0),
+                            child: Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: Colors.white,
+                              elevation: 15,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    40, 30, 30, 30),
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // use this button to open the multi-select dialog
+                                      ElevatedButton(
+                                        child: const Text('HOD',
+                                            style: TextStyle(fontSize: 18)),
+                                        style: ElevatedButton.styleFrom(
+                                          primary:
+                                              Theme.of(context).backgroundColor,
+                                          minimumSize: const Size(80, 40),
+                                        ),
+                                        onPressed: () =>
+                                            _showMultiSelectHod(outletList[1]),
+                                      ),
+                                    ]),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ]),
-                    Row(mainAxisSize: MainAxisSize.max, children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(15, 20, 0, 0),
-                        child: Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.white,
-                          elevation: 15,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Padding(
+                        ]),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                20, 30, 20, 30),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  // use this button to open the multi-select dialog
-                                  ElevatedButton(
-                                    child: const Text('Tuck Shop',
-                                        style: TextStyle(fontSize: 17)),
-                                    style: ElevatedButton.styleFrom(
-                                      primary:
-                                          Theme.of(context).backgroundColor,
-                                      minimumSize: const Size(100, 40),
-                                    ),
-                                    onPressed: () =>
-                                        _showMultiSelectTuckshop(outletList[2]),
-                                  ),
-                                ]),
+                                15, 20, 0, 0),
+                            child: Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: Colors.white,
+                              elevation: 15,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    20, 30, 20, 30),
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // use this button to open the multi-select dialog
+                                      ElevatedButton(
+                                        child: const Text('Tuck Shop',
+                                            style: TextStyle(fontSize: 17)),
+                                        style: ElevatedButton.styleFrom(
+                                          primary:
+                                              Theme.of(context).backgroundColor,
+                                          minimumSize: const Size(100, 40),
+                                        ),
+                                        onPressed: () =>
+                                            _showMultiSelectTuckshop(
+                                                outletList[2]),
+                                      ),
+                                    ]),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(35, 20, 0, 0),
-                        child: Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.white,
-                          elevation: 15,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Padding(
+                          Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                25, 30, 25, 30),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  // use this button to open the multi-select dialog
-                                  ElevatedButton(
-                                    child: const Text('Outside',
-                                        style: TextStyle(fontSize: 20)),
-                                    style: ElevatedButton.styleFrom(
-                                      primary:
-                                          Theme.of(context).backgroundColor,
-                                      minimumSize: const Size(100, 40),
-                                    ),
-                                    onPressed: () {},
-                                  ),
-                                ]),
+                                35, 20, 0, 0),
+                            child: Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: Colors.white,
+                              elevation: 15,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    25, 30, 25, 30),
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // use this button to open the multi-select dialog
+                                      ElevatedButton(
+                                        child: const Text('Outside',
+                                            style: TextStyle(fontSize: 20)),
+                                        style: ElevatedButton.styleFrom(
+                                          primary:
+                                              Theme.of(context).backgroundColor,
+                                          minimumSize: const Size(100, 40),
+                                        ),
+                                        onPressed: () {},
+                                      ),
+                                    ]),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ]),
+                        ]),
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Divider(
@@ -290,8 +302,12 @@ class _MealsPageState extends State<MealsPage> {
                     ),
                     Wrap(
                       children: _selectedItems
-                          .map((e) => Chip(
-                                label: Text(e),
+                          .map((item) => Padding(
+                                padding: EdgeInsets.all(3),
+                                child: Chip(
+                                  padding: EdgeInsets.all(2),
+                                  label: Text(item["f_name"]),
+                                ),
                               ))
                           .toList(),
                     ),

@@ -10,15 +10,15 @@ class MultiSelect extends StatefulWidget {
 
 class _MultiSelectState extends State<MultiSelect> {
   // this variable holds the selected items
-  final List<String> _selectedItems = [];
+  var _selectedItems = [];
 
 // This function is triggered when a checkbox is checked or unchecked
-  void _itemChange(String itemValue, bool isSelected) {
+  void _itemChange(Map item, bool isSelected) {
     setState(() {
       if (isSelected) {
-        _selectedItems.add(itemValue);
+        _selectedItems.add(item);
       } else {
-        _selectedItems.remove(itemValue);
+        _selectedItems.remove(item);
       }
     });
   }
@@ -41,11 +41,10 @@ class _MultiSelectState extends State<MultiSelect> {
         child: ListBody(
           children: widget.items
               .map((item) => CheckboxListTile(
-                    value: _selectedItems.contains(item["f_name"]),
+                    value: _selectedItems.contains(item),
                     title: Text(item["f_name"]),
                     controlAffinity: ListTileControlAffinity.leading,
-                    onChanged: (isChecked) =>
-                        _itemChange(item["f_name"], isChecked!),
+                    onChanged: (isChecked) => _itemChange(item, isChecked!),
                   ))
               .toList(),
         ),
