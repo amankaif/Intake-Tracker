@@ -73,29 +73,7 @@ class LeaderBoardState extends State<LeaderBoard> {
           }
 
           if (snapshot.connectionState == ConnectionState.done) {
-            for (int i = 0; i < 5; i++) {
-              print(QueryResults.entryList[i]);
-              print(QueryResults.entryList[i]["name"]);
-              print(QueryResults.entryList[i]['name']['name']);
-            }
             return Scaffold(
-              floatingActionButton: ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: const BorderSide(
-                          color: Colors.teal,
-                          width: 2.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                  onPressed: () {
-                    dataBaseNotifier.fetchLeaderboardEntries();
-                    setState(() {});
-                  },
-                  child: Text("UPDATE")),
               body: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -175,7 +153,7 @@ class LeaderBoardState extends State<LeaderBoard> {
                               ),
                               Column(
                                 children: [
-                                  Text("#33",
+                                  Text("#"+QueryResults.leaderboardUserRank.toString(),
                                       style: TextStyle(
                                           fontSize: 30,
                                           fontWeight: FontWeight.w300,

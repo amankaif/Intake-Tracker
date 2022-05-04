@@ -32,6 +32,11 @@ id, name:user_details(name), total_calories""")
           .limit(10)
           .execute();
       var dataLeaderboard = responseLeaderboard.data;
+
+      var rankList = dataLeaderboard.map((entry) => entry["id"]).toList();
+      QueryResults.leaderboardUserRank =
+          rankList.indexOf(QueryResults.userId) + 1;
+
       var temp = await supabaseCredentials.supabaseClient
           .from("leaderboard")
           .select("total_calories")
@@ -39,8 +44,6 @@ id, name:user_details(name), total_calories""")
           .execute();
       var tempData = temp.data;
       QueryResults.leadboardUserCalorieCount = tempData[0]["total_calories"];
-
-      
 
       return dataLeaderboard;
     } catch (e) {
