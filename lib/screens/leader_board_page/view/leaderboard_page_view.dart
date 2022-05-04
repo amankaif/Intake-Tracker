@@ -132,7 +132,7 @@ class LeaderBoardState extends State<LeaderBoard> {
                       Column(
                         children: [
                           Text(
-                            "54",
+                            "1200",
                             style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
