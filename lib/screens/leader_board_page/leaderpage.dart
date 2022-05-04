@@ -8,57 +8,13 @@ class LeaderBoard extends StatefulWidget {
 }
 
 class LeaderBoardState extends State<LeaderBoard> {
-  final List items = [
-    {
-      'name': "Ashish",
-      'calories': 2700,
-    },
-    {
-      'name': "Satya",
-      'calories': 2500,
-    },
-    {
-      'name': "Harsh",
-      'calories': 2300,
-    },
-    {
-      'name': "Vishnu",
-      'calories': 1950,
-    },
-    {
-      'name': "Venkat",
-      'calories': 1885,
-    },
-    {
-      'name': "Om",
-      'calories': 1850,
-    },
-    {
-      'name': "Asif",
-      'calories': 1790,
-    },
-    {
-      'name': "Aman",
-      'calories': 1720,
-    },
-    {
-      'name': "Abhishek",
-      'calories': 1670,
-    },
-    {
-      'name': "Arjun",
-      'calories': 1620,
-    },
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/');
-            },
+        leading: IconButton(onPressed: () {
+          Navigator.pushNamed(context, '/');
+        },
             icon: const Icon(Icons.arrow_back)),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
@@ -71,6 +27,7 @@ class LeaderBoardState extends State<LeaderBoard> {
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
+
         child: Column(
           children: [
             Container(
@@ -95,12 +52,10 @@ class LeaderBoardState extends State<LeaderBoard> {
                         right: 0.0,
                         child: Container(
                           padding: const EdgeInsets.all(4),
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.rectangle, color: Colors.white),
-                          child: const Icon(
-                            Icons.edit,
-                            color: Colors.blue,
-                          ),
+                          decoration: const BoxDecoration(shape: BoxShape
+                              .rectangle, color: Colors.white),
+                          child:
+                          const Icon(Icons.edit, color: Colors.blue,),
                         ),
                       )
                     ],
@@ -132,7 +87,7 @@ class LeaderBoardState extends State<LeaderBoard> {
                       Column(
                         children: [
                           Text(
-                            "1200",
+                            "54",
                             style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
@@ -183,33 +138,32 @@ class LeaderBoardState extends State<LeaderBoard> {
                     itemBuilder: (context, index) {
                       return ListTile(
                         title: Row(
-                          children: [
-                            const CircleAvatar(
+                          children: const [
+                            CircleAvatar(
                               backgroundImage: NetworkImage(
                                   "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=580&q=80"),
                             ),
-                            const SizedBox(
-                              width: 20,
+                            SizedBox(
+                              width: 3,
                             ),
-                            Text(items[index]['name'])
+                            Text("xxxxxx")
                           ],
                         ),
-                        leading: Text(
-                          "#${index + 1}",
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        trailing: Text(items[index]['calories'].toString(),
-                            style:
-                            const TextStyle(fontWeight: FontWeight.bold)),
+                        leading: Text("#${index + 1}",
+                          style: const TextStyle(fontWeight: FontWeight.bold),),
+                        trailing: Text(
+                            "cal.${(2500 / (index + 1)).toString().substring(0,
+                                5)}",
+                            style: const TextStyle(fontWeight: FontWeight
+                                .bold)),
                       );
                     },
                     separatorBuilder: (context, index) => const Divider(
                       thickness: 1.5,
                       color: Colors.blue,
                       indent: 10,
-                      endIndent: 10,
-                    ),
-                    itemCount: items.length),
+                      endIndent: 10,),
+                    itemCount: 20+1),
               ),
             )
           ],
