@@ -23,7 +23,23 @@ class DatabaseService {
   }
 
 
-  
+  Future fetchLeaderboardEntries() async {
+    if (QueryResults.haveLeaderboardEntriesPulled) {
+      return [];
+    }
+    try {
+      var responseLeaderboard =
+          await supabaseCredentials.supabaseClient.from("leaderboard").select("""
+id, name:user_details(name), total_calories""").execute();
+      var dataLeaderboard = responseLeaderboard.data;
+      // print(dataNescafe);
+      // print(dataHod);
+      // print(dataTuck);
+      return;
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
 
   Future fetchMealsPageItems() async {

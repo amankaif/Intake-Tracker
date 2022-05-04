@@ -24,6 +24,21 @@ class DataBaseNotifier extends ChangeNotifier {
     //
   }
 
+
+  Future fetchLeaderboardEntries() async {
+    List entryList = await _databaseService.fetchLeaderboardEntries();
+    // return outletList;
+    if (QueryResults.haveLeaderboardEntriesPulled) {
+    } else {
+      QueryResults.entryList = entryList;
+    }
+    // return data.map((fooditem) => FoodItems.fromJson(fooditem)).toList();
+    // print(data);
+    // FoodItems modelledData = FoodItems.fromJson((data));
+    // return modelledData;
+  }
+
+
   Future fetchMealsPageItems() async {
     List outletList = await _databaseService.fetchMealsPageItems();
     // return outletList;

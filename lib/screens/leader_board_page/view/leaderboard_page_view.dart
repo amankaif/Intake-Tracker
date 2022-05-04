@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:calorie_tracker/core/persistent_data/persistent_data.dart';
+import 'package:calorie_tracker/core/provider/provider.dart';
+import 'package:calorie_tracker/core/notifier/notifier.dart';
+import 'package:calorie_tracker/core/service/service.dart';
 
 class LeaderBoard extends StatefulWidget {
   const LeaderBoard({Key? key}) : super(key: key);
@@ -53,23 +58,14 @@ class LeaderBoardState extends State<LeaderBoard> {
 
   @override
   Widget build(BuildContext context) {
+    final DataBaseNotifier dataBaseNotifier =
+        Provider.of<DataBaseNotifier>(context, listen: false);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/');
-            },
-            icon: const Icon(Icons.arrow_back)),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
-        ],
-        title: const Text(
-          "Leader Board",
-          style: TextStyle(fontSize: 25),
-        ),
-        centerTitle: true,
-        elevation: 0.0,
-      ),
+      floatingActionButton: ElevatedButton(
+          onPressed: () {
+            dataBaseNotifier.fetchLeaderboardEntries();
+          },
+          child: Text("test")),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -108,9 +104,9 @@ class LeaderBoardState extends State<LeaderBoard> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text(
-                    "Vishnu Vardhan",
-                    style: TextStyle(
+                  Text(
+                    QueryResults.userName,
+                    style: const TextStyle(
                         fontSize: 22,
                         color: Colors.white,
                         fontWeight: FontWeight.w500),
@@ -200,15 +196,15 @@ class LeaderBoardState extends State<LeaderBoard> {
                         ),
                         trailing: Text(items[index]['calories'].toString(),
                             style:
-                            const TextStyle(fontWeight: FontWeight.bold)),
+                                const TextStyle(fontWeight: FontWeight.bold)),
                       );
                     },
                     separatorBuilder: (context, index) => const Divider(
-                      thickness: 1.5,
-                      color: Colors.blue,
-                      indent: 10,
-                      endIndent: 10,
-                    ),
+                          thickness: 1.5,
+                          color: Colors.blue,
+                          indent: 10,
+                          endIndent: 10,
+                        ),
                     itemCount: items.length),
               ),
             )
