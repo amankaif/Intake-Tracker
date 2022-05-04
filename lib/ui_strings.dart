@@ -1,9 +1,13 @@
+import 'package:calorie_tracker/supabase/supabase.credentials.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 // Authentication
 
 final supabase = Supabase.instance.client;
+
+late String userId = '';
 
 extension ShowSnackBar on BuildContext {
   void showSnackBar({
@@ -21,21 +25,17 @@ extension ShowSnackBar on BuildContext {
   }
 }
 
-
-
-
 var displayedDayDateString = const Text("Monday 17 April, 2022",
     style: TextStyle(
       // fontFamily: 'Inter',
       fontSize: 17,
     ));
 
-
-final timeNow = DateTime.now();
-final timeParse = DateTime.parse('1969-07-20 20:18:04Z');
-// var day = DateFormat.yMMMMd('en_US');
 var leaderProfileBackgroundColor = Colors.purple;
 var leaderProfileTextColor = Colors.white;
-
 // get the today's day
-var today = 'tuesday';
+var time = DateTime.now();
+String val = time as String;
+String formattedDate = DateFormat('dd-MM-yyyy kk:mm:ss').format(time);
+// TimeOfDay now = TimeOfDay.now();
+var today = DateFormat('EEEE').format(time);

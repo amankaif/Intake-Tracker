@@ -1,3 +1,4 @@
+import 'package:calorie_tracker/screens/history_page/history_page_view.dart';
 import 'package:calorie_tracker/widgets/bottom_navigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +42,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // The initialRoute will and can be changed by people for
       // testing purposes to start the app to the screen they want to test.
-      initialRoute: '.',
+      restorationScopeId: 'root',
+      initialRoute: 'demo_login',
       routes: {
         '/': (context) => const HomeScreen(),
         'login': (context) => const LoginPage(),
@@ -50,6 +52,7 @@ class MyApp extends StatelessWidget {
         'demo_login': (context) => const LoginDemo(),
         '.': (context) => BottomNavigationBar_(),
         'splash': (context) => const SplashPage(),
+        'history': (context) => const HistoryPage(),
       },
       debugShowCheckedModeBanner: false,
 

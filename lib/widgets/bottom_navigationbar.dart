@@ -24,17 +24,17 @@ class _BottomNavigationBar_State extends State<BottomNavigationBar_> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
       appBar: AppBar(
         title: Text(today),
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         centerTitle: true,
-        elevation: 0.0,
+        // elevation: 0.0,
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
         ],
         // backgroundColor: Colors.green,
       ),
-      drawer: const NavBar(),
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(

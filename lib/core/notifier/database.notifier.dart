@@ -1,6 +1,3 @@
-// ignore_for_file: avoid_print
-
-import 'dart:convert';
 
 import 'package:calorie_tracker/core/models_db/fooditems.odel.dart';
 import 'package:calorie_tracker/core/service/database.service.dart';
@@ -12,6 +9,9 @@ class DataBaseNotifier extends ChangeNotifier {
   final DatabaseService _databaseService = DatabaseService();
   late String _day;
   late String _time;
+  late int _serving;
+  late String _id;
+  late int _fid;
 
   Future fetchFooditems({required String f_day, required String f_time}) async {
     _day = f_day;
@@ -37,9 +37,12 @@ class DataBaseNotifier extends ChangeNotifier {
     // return modelledData;
   }
 
-  Future<PostgrestResponse?> addDemoitems({
-    required String name,
-  }) async {
-    await _databaseService.addDemoitems(name: 'Asif');
+  Future<PostgrestResponse?> addConsumption(
+      {required int fid,required String id, required int c_servings}) async {
+    _serving = c_servings;
+    _id = id;
+    _fid = fid;
+    await _databaseService.addConsumption(
+        fid: _fid, id: _id, c_servings: _serving);
   }
 }

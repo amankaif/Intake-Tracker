@@ -2,11 +2,16 @@
 
 import 'package:calorie_tracker/core/models_db/fooditems.odel.dart';
 import 'package:calorie_tracker/models/meals_data.dart';
+import 'package:calorie_tracker/screens/history_page/history_page_data.dart';
 import 'package:flutter/material.dart';
+import 'package:calorie_tracker/screens/history_page/history_page_data.dart';
 
 class CardDemoMeals extends StatefulWidget {
-  CardDemoMeals({Key? key, required this.name}) : super(key: key);
+  CardDemoMeals({Key? key,required this.id, required this.name, required this.data})
+      : super(key: key);
   var name;
+  var id;
+  HistoryData data;
   @override
   State<CardDemoMeals> createState() => _CardDemoMealsState();
 }
@@ -67,6 +72,11 @@ class _CardDemoMealsState extends State<CardDemoMeals> {
                       onPressed: () {
                         if (_state == 0) {
                           _state = 1;
+                          setState(() {
+                            this.widget.data.id = widget.id;
+                            this.widget.data.count = _servings;
+                          });
+
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             duration: Duration(seconds: 2),
                             content: Text("Counter Locked :)"),
@@ -75,6 +85,10 @@ class _CardDemoMealsState extends State<CardDemoMeals> {
                             margin: EdgeInsets.all(10),
                           ));
                         } else {
+                          setState(() {
+                            this.widget.data.id = widget.id;
+                            this.widget.data.count = _servings;
+                          });
                           _state = 0;
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
@@ -86,13 +100,21 @@ class _CardDemoMealsState extends State<CardDemoMeals> {
                             margin: EdgeInsets.all(10),
                           ));
                         }
-
                         // setState(() => _servings++);
                       },
                       child: const Icon(Icons.save)),
                 ],
               ),
             ],
+          ),
+          const Divider(),
+          ListTile(
+            // leading: Icon(Icons.food_bank),
+            // title: Text(widget.name),
+            subtitle: Text(
+              'Preview:\n\nFood ID: ${widget.data.id}\nCount: ${widget.data.count}',
+              style: TextStyle(color: Colors.amber),
+            ),
           ),
           // Image.asset('assets/images/bg.jpg'),
         ],

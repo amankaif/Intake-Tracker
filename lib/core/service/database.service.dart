@@ -1,4 +1,5 @@
 import 'package:calorie_tracker/supabase/supabase.credentials.dart';
+import 'package:calorie_tracker/ui_strings.dart';
 import 'package:supabase/supabase.dart';
 import 'package:calorie_tracker/core/db_data/db_data.dart';
 
@@ -49,13 +50,22 @@ class DatabaseService {
     }
   }
 
-  Future<PostgrestResponse?> addDemoitems({
-    required String name,
+  Future<PostgrestResponse?> addConsumption({
+    required int fid,
+    required String id,
+    required int c_servings,
   }) async {
     try {
       PostgrestResponse? response = await supabaseCredentials.supabaseClient
-          .from("demo_table")
-          .insert({"name": name}).execute();
+          .from("meals_consumed")
+          .insert([
+        {
+          "c_servings": c_servings,
+          "id": id,
+          "c_time": formattedDate,
+          "fid": fid
+        }
+      ]).execute();
 
       if (response.data != null) {
         print(response.data);
@@ -67,4 +77,23 @@ class DatabaseService {
       print(e.toString());
     }
   }
+
+  // Future<PostgrestResponse?> addDemoitems({
+  //   required String name,
+  // }) async {
+  //   try {
+  //     PostgrestResponse? response = await supabaseCredentials.supabaseClient
+  //         .from("demo_table")
+  //         .insert({"name": name}).execute();
+
+  //     if (response.data != null) {
+  //       print(response.data);
+  //     } else {
+  //       print(response.error);
+  //     }
+  //     // print(response.data);
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
 }

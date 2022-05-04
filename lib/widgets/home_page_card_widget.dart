@@ -5,7 +5,7 @@ import 'package:calorie_tracker/screens/home_page/view/new_page_from_tap.dart';
 
 class CardWidget extends StatefulWidget {
   final CardItem item;
-  // ignore: use_key_in_widget_constructors
+  
   CardWidget({required this.item});
   @override
   State<CardWidget> createState() => _CardWidgetState();

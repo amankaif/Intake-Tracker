@@ -1,3 +1,4 @@
+import 'package:calorie_tracker/ui_strings.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
@@ -15,7 +16,7 @@ class NavBar extends StatelessWidget {
               'Shaik Asif',
               style: TextStyle(fontFamily: 'Inter', fontSize: 20),
             ),
-            accountEmail: const Text('shaik.asif20@st.niituniversity.in'),
+            accountEmail: Text(userId),
             currentAccountPicture: CircleAvatar(
               radius: 100,
               child: ClipOval(
@@ -35,13 +36,13 @@ class NavBar extends StatelessWidget {
               fit: BoxFit.cover,
             )),
           ),
-          // ListTile(
-          //   leading: const Icon(Icons.home),
-          //   title: const Text('Home'),
-          //   onTap: () => {
-          //     Navigator.pushNamed(context, '/')
-          //   }, //on clicking this we can redirect or we can perform any action
-          // ),
+          ListTile(
+            leading: const Icon(Icons.qr_code),
+            title: const Text('History'),
+            onTap: () => {
+              Navigator.pushNamed(context, 'history')
+            }, //on clicking this we can redirect or we can perform any action
+          ),
           // ListTile(
           //   leading: const Icon(Icons.leaderboard),
           //   title: const Text('LeaderBoard'),

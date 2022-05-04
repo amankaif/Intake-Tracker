@@ -1,6 +1,4 @@
 import 'package:calorie_tracker/core/notifier/database.notifier.dart';
-import 'package:calorie_tracker/screens/home_page/view/Navbar.dart';
-import 'package:calorie_tracker/ui_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:calorie_tracker/widgets/widgets.dart';
 import 'package:calorie_tracker/models/models.dart';
@@ -21,7 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       // drawer: const NavBar(),
 
-      // ignore: prefer_const_literals_to_create_immutables
 
       body: Container(
           // height: 200,

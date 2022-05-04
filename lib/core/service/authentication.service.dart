@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, duplicate_ignore
 
+import 'package:calorie_tracker/ui_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase/supabase.dart';
 import '../../supabase/supabase.credentials.dart';
@@ -42,6 +43,7 @@ class AuthenticationService {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Account SignUp successful: $email")));
       print("SignUp Successful: $userEmail");
+      print("UserID:${supabaseCredentials.supabaseClient.auth.currentUser}");
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("SignUp failed: ${response.error!.message}")));
@@ -67,6 +69,9 @@ class AuthenticationService {
           .showSnackBar(SnackBar(content: Text("LogIn successful: $email")));
       // ignore: avoid_print
       // print("LogIn Successful: $userEmail");
+      final idUSER = await supabaseCredentials.supabaseClient.auth.currentUser?.id;
+      userId = idUSER!;
+      //  final userName = await supabaseCredentials.supabaseClient.
       Navigator.pushNamed(context, '.');
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -85,5 +90,4 @@ class AuthenticationService {
       //     .showSnackBar(SnackBar(content: Text("LogOUt successful")));
     }
   }
-
 }

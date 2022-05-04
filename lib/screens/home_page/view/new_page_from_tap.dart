@@ -1,13 +1,16 @@
 import 'package:calorie_tracker/core/models_db/fooditems.odel.dart';
 import 'package:calorie_tracker/core/notifier/database.notifier.dart';
 import 'package:calorie_tracker/models/models.dart';
+import 'package:calorie_tracker/screens/history_page/history_page_data.dart';
 import 'package:calorie_tracker/ui_strings.dart';
 import 'package:calorie_tracker/widgets/meal_list_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:calorie_tracker/screens/history_page/history_page_data.dart';
 
 class NewPage extends StatelessWidget {
   final CardItem item;
+
   const NewPage({
     Key? key,
     required this.item,
@@ -17,7 +20,7 @@ class NewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final DataBaseNotifier dataBaseNotifier =
         Provider.of<DataBaseNotifier>(context, listen: false);
-    List total = [];
+    HistoryData sendData = new HistoryData();
     return Scaffold(
       appBar: AppBar(
         title: Text(item.time),
@@ -45,7 +48,7 @@ class NewPage extends StatelessWidget {
               ),
             ),
             Container(
-              height: 400,
+              height: 300,
               padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
               child: FutureBuilder(
                 future: dataBaseNotifier.fetchFooditems(
@@ -69,17 +72,39 @@ class NewPage extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         FoodItems fooditems = _snapshot[index];
                         return CardDemoMeals(
+                          id: fooditems.fid,
                           name: fooditems.fName,
+                          data: sendData,
                         );
                       },
                     );
                   }
+
                   return Row(
                       children: <Widget>[CircularProgressIndicator()],
                       mainAxisAlignment: MainAxisAlignment.center);
                 },
               ),
             ),
+            Container(
+              // padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  print(sendData.count);
+                  print(sendData.id);
+                  print("UserId: ${userId}");
+
+                  print("Time:${formattedDate}");
+                  dataBaseNotifier.addConsumption(
+                      c_servings: sendData.count, id: userId, fid :sendData.id);
+
+                  // history.add(sendData);
+                  // dataHistory.add(sendData);
+                },
+                child: const Text('Submit'),
+              ),
+            )
+
             //   Expanded(
             //     child: Container(
             //       height: 350,
