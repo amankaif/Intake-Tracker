@@ -17,40 +17,51 @@ class _CardWidgetState extends State<CardWidget> {
     return SizedBox(
       // width: 200,
       height: 175,
-      child: Column(
-        children: [
-          Expanded(
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
-                child: AspectRatio(
-                    aspectRatio: 10 / 3,
-                    child: Material(
-                      child: Ink.image(
-                        image: AssetImage(widget.item.urlImage),
-                        fit: BoxFit.cover,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => NewPage(
-                                  item: widget.item,
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ))),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20.0),
+        child: Container(
+          color: Colors.grey.withOpacity(0.65),
+          child: Column(
+            children: [
+              Expanded(
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0),
+                    child: AspectRatio(
+                        aspectRatio: 10 / 3,
+                        child: Material(
+                          child: Ink.image(
+                            image: AssetImage(widget.item.urlImage),
+                            fit: BoxFit.cover,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => NewPage(
+                                      item: widget.item,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ))),
+              ),
+              const SizedBox(height: 4),
+              Column(
+                children: [
+                  Text(widget.item.title,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold)),
+                  Text(widget.item.time,
+                      style: const TextStyle(
+                          fontSize: 10, fontWeight: FontWeight.bold)),
+                ],
+              ),
+              SizedBox(height: 3)
+            ],
           ),
-          const SizedBox(height: 4),
-          Text(widget.item.title,
-              style:
-                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          Text(widget.item.time,
-              style:
-                  const TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-        ],
+        ),
       ),
     );
   }

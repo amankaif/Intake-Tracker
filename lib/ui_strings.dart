@@ -7,7 +7,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 final supabase = Supabase.instance.client;
 
-late String userId = '';
+// late String userId = '';
 
 extension ShowSnackBar on BuildContext {
   void showSnackBar({

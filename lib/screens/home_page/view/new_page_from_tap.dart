@@ -7,6 +7,7 @@ import 'package:calorie_tracker/widgets/meal_list_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:calorie_tracker/screens/history_page/history_page_data.dart';
+import 'package:calorie_tracker/core/persistent_data/persistent_data.dart';
 
 class NewPage extends StatelessWidget {
   final CardItem item;
@@ -92,11 +93,13 @@ class NewPage extends StatelessWidget {
                 onPressed: () {
                   print(sendData.count);
                   print(sendData.id);
-                  print("UserId: ${userId}");
+                  print("UserId: ${QueryResults.userId}");
 
                   print("Time:${formattedDate}");
                   dataBaseNotifier.addConsumption(
-                      c_servings: sendData.count, id: userId, fid :sendData.id);
+                      c_servings: sendData.count,
+                      id: QueryResults.userId,
+                      fid: sendData.id);
 
                   // history.add(sendData);
                   // dataHistory.add(sendData);

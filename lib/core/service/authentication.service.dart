@@ -4,6 +4,7 @@ import 'package:calorie_tracker/ui_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase/supabase.dart';
 import '../../supabase/supabase.credentials.dart';
+import 'package:calorie_tracker/core/persistent_data/persistent_data.dart';
 // import 'supabase.credentials.dart';
 
 // class AuthenticationService {
@@ -69,8 +70,10 @@ class AuthenticationService {
           .showSnackBar(SnackBar(content: Text("LogIn successful: $email")));
       // ignore: avoid_print
       // print("LogIn Successful: $userEmail");
-      final idUSER = await supabaseCredentials.supabaseClient.auth.currentUser?.id;
-      userId = idUSER!;
+      final idUSER =
+          await supabaseCredentials.supabaseClient.auth.currentUser?.id;
+      QueryResults.userId = idUSER!;
+      QueryResults.updateUserName();
       //  final userName = await supabaseCredentials.supabaseClient.
       Navigator.pushNamed(context, '.');
     } else {

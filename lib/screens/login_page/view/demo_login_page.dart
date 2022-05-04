@@ -15,7 +15,6 @@ class LoginDemo extends StatefulWidget {
   _LoginDemoState createState() => _LoginDemoState();
 }
 
-
 class _LoginDemoState extends State<LoginDemo> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
@@ -98,6 +97,7 @@ class _LoginDemoState extends State<LoginDemo> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                obscureText: true,
                 controller: _password,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Enter Password'),
@@ -128,7 +128,6 @@ class _LoginDemoState extends State<LoginDemo> {
                   if (email.isNotEmpty && password.isNotEmpty) {
                     await authenticationNotifier.login(
                         context: context, email: email, password: password);
-                    
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text("Fill the details")));
