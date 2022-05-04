@@ -22,25 +22,20 @@ class DatabaseService {
     }
   }
 
-
-  Future fetchLeaderboardEntries() async {
-    if (QueryResults.haveLeaderboardEntriesPulled) {
-      return [];
-    }
+  Future fetchConsumedData() async {
     try {
-      var responseLeaderboard =
-          await supabaseCredentials.supabaseClient.from("leaderboard").select("""
-id, name:user_details(name), total_calories""").execute();
-      var dataLeaderboard = responseLeaderboard.data;
-      // print(dataNescafe);
-      // print(dataHod);
-      // print(dataTuck);
-      return;
+      var response = await supabaseCredentials.supabaseClient
+          .from("meals_consumed")
+          .select()
+          .eq('id', QueryResults)
+          .execute();
+      var data = response.data;
+      // print(data);
+      return data;
     } catch (e) {
       print(e.toString());
     }
   }
-
 
   Future fetchMealsPageItems() async {
     if (QueryResults.haveMealItemsPulled) {

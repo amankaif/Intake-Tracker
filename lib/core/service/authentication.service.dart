@@ -36,8 +36,9 @@ class AuthenticationService {
     required String password,
     required BuildContext context,
   }) async {
-    GotrueSessionResponse response =
-        await supabaseCredentials.supabaseClient.auth.signUp(email, password);
+    GotrueSessionResponse response = await supabaseCredentials
+        .supabaseClient.auth
+        .signUp(email, password, userMetadata: {});
 
     if (response.error == null) {
       String? userEmail = response.data!.user?.email;
@@ -46,8 +47,8 @@ class AuthenticationService {
       print("SignUp Successful: $userEmail");
       print("UserID:${supabaseCredentials.supabaseClient.auth.currentUser}");
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("SignUp failed: ${response.error!.message}")));
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //     SnackBar(content: Text("SignUp failed: ${response.error!.message}")));
       print("SignUp error: ${response.error!.message}");
     }
     return null;
@@ -72,8 +73,7 @@ class AuthenticationService {
       // print("LogIn Successful: $userEmail");
       final idUSER =
           await supabaseCredentials.supabaseClient.auth.currentUser?.id;
-      QueryResults.userId = idUSER!;
-      QueryResults.updateUserName();
+      userId = idUSER!;
       //  final userName = await supabaseCredentials.supabaseClient.
       Navigator.pushNamed(context, '.');
     } else {

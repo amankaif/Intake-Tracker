@@ -6,8 +6,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 // Authentication
 
 final supabase = Supabase.instance.client;
-
-// late String userId = '';
+//This will get the UserID and and we can store while the authentication of logIn
+late String userId = '';
 
 extension ShowSnackBar on BuildContext {
   void showSnackBar({
@@ -36,6 +36,9 @@ var leaderProfileTextColor = Colors.white;
 // get the today's day
 var time = DateTime.now();
 String val = time as String;
+
+//Formated date format to entry the consumption_table
 String formattedDate = DateFormat('dd-MM-yyyy kk:mm:ss').format(time);
-// TimeOfDay now = TimeOfDay.now();
+
+//This gives Todays's day
 var today = DateFormat('EEEE').format(time);
