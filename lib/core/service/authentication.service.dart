@@ -85,6 +85,21 @@ class AuthenticationService {
     return null;
   }
 
+    Future fetchConsumedData() async {
+    try {
+      var response = await supabaseCredentials.supabaseClient
+          .from("meals_consumed")
+          .select()
+          .eq('id', QueryResults)
+          .execute();
+      var data = response.data;
+      // print(data);
+      return data;
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   Future<String?> _signOut() async {
     final response = await supabaseCredentials.supabaseClient.auth.signOut();
     final error = response.error;

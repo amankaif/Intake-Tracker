@@ -15,21 +15,23 @@ class DatabaseService {
           .eq('f_meal_time', f_time.toLowerCase())
           .execute();
       var data = response.data;
-      // print(data);
+      print(data);
       return data;
     } catch (e) {
       print(e.toString());
     }
   }
 
+  
 
   Future fetchLeaderboardEntries() async {
     if (QueryResults.haveLeaderboardEntriesPulled) {
       return [];
     }
     try {
-      var responseLeaderboard =
-          await supabaseCredentials.supabaseClient.from("leaderboard").select("""
+      var responseLeaderboard = await supabaseCredentials.supabaseClient
+          .from("leaderboard")
+          .select("""
 id, name:user_details(name), total_calories""").execute();
       var dataLeaderboard = responseLeaderboard.data;
       // print(dataNescafe);
@@ -40,7 +42,6 @@ id, name:user_details(name), total_calories""").execute();
       print(e.toString());
     }
   }
-
 
   Future fetchMealsPageItems() async {
     if (QueryResults.haveMealItemsPulled) {
@@ -93,6 +94,21 @@ id, name:user_details(name), total_calories""").execute();
         print(response.error);
       }
       // print(response.data);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future fetchConsumedData() async {
+    try {
+      var response = await supabaseCredentials.supabaseClient
+          .from("meals_consumed")
+          .select("f_name:food_items(f_name), cid, fid, c_time, c_servings, id")
+          .eq('id', QueryResults.userId)
+          .execute();
+      var data = response.data;
+      // print(data);
+      return data;
     } catch (e) {
       print(e.toString());
     }

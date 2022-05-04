@@ -12,6 +12,8 @@ class QueryResults {
   static bool haveLeaderboardEntriesPulled = false;
   static late String userId;
   static String userName = "Name not provided during registration";
+  static late String foodName = '';
+  static late int foodId;
 
   static Future updateUserName() async {
     SupabaseCredentials supabaseCredentials = SupabaseCredentials();
@@ -23,9 +25,31 @@ class QueryResults {
             .eq("id", QueryResults.userId)
             .execute();
         var data = response.data;
-        QueryResults.userName = data[0]["name"];
-        QueryResults.userName = QueryResults.userName[0].toUpperCase() +
-            QueryResults.userName.substring(1);
+        print(data);
+        QueryResults.foodName = data[0]["name"];
+        print(foodName);
+        // QueryResults.userName = QueryResults.userName[0].toUpperCase() +
+        //     QueryResults.userName.substring(1);
+        print(response.error);
+        // NavBar.setState();
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  static Future getFoodName() async {
+    SupabaseCredentials supabaseCredentials = SupabaseCredentials();
+    try {
+      if (QueryResults.userId.isNotEmpty) {
+        var response = await supabaseCredentials.supabaseClient
+            .from("food_items")
+            .select("f_name")
+            .eq("fid", QueryResults.foodId)
+            .execute();
+        var data = response.data;
+        print(data);
+        QueryResults.foodName = data[0]["f_name"];
         print(response.error);
         // NavBar.setState();
       }
