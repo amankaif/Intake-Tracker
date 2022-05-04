@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class background extends StatelessWidget {
-  const background({
+class Background extends StatelessWidget {
+  const Background({
     Key? key,
   }) : super(key: key);
 

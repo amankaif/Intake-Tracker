@@ -10,7 +10,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        background(),
+        Background(),
         Scaffold(
           backgroundColor: Colors.transparent,
           body: SafeArea(
