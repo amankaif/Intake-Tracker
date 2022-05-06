@@ -36,8 +36,9 @@ class _HistoryCardState extends State<HistoryCard> {
               // QueryResults.foodId=this.widget.data.fid,
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child:
-                    Container(width: 300, child: Text(this.widget.data.f_name)),
+                child: Wrap(children: [
+                  Container(width: 300, child: Text(this.widget.data.f_name))
+                ]),
               ),
             ],
           ),

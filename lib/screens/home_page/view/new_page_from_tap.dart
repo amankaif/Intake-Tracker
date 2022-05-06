@@ -29,105 +29,108 @@ class NewPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
-        child: Column(
-          // children: [CardDemoMeals(), CardDemoMeals(), CardDemoMeals()]
-          // children: breakfast.map((meals) => mealsCard(meals)).toList(),
-          children: [
-            AspectRatio(
-              aspectRatio: 5 / 3,
-              child: Image.asset(
-                item.urlImage,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              item.title,
-              style: const TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Container(
-              height: 300,
-              padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-              child: FutureBuilder(
-                future: dataBaseNotifier.fetchFooditems(
-                  f_day: today.toLowerCase(),
-                  f_time: item.title.toLowerCase(),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            // children: [CardDemoMeals(), CardDemoMeals(), CardDemoMeals()]
+            // children: breakfast.map((meals) => mealsCard(meals)).toList(),
+            children: [
+              AspectRatio(
+                aspectRatio: 5 / 3,
+                child: Image.asset(
+                  item.urlImage,
+                  fit: BoxFit.cover,
                 ),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
+              ),
+              const SizedBox(height: 8),
+              Text(
+                item.title,
+                style: const TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Container(
+                height: 300,
+                padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
+                child: FutureBuilder(
+                  future: dataBaseNotifier.fetchFooditems(
+                    f_day: today.toLowerCase(),
+                    f_time: item.title.toLowerCase(),
+                  ),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Row(
+                          children: <Widget>[CircularProgressIndicator()],
+                          mainAxisAlignment: MainAxisAlignment.center);
+                    }
+                    if (snapshot.hasData) {
+                      var _snapshot = snapshot.data as List;
+                      return ListView.separated(
+                        physics: const BouncingScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                        itemCount: _snapshot.length,
+                        separatorBuilder: (context, _) =>
+                            const SizedBox(height: 10),
+                        itemBuilder: (BuildContext context, int index) {
+                          FoodItems fooditems = _snapshot[index];
+                          return CardDemoMeals(
+                            id: fooditems.fid,
+                            name: fooditems.fName,
+                            data: sendData,
+                          );
+                        },
+                      );
+                    }
+        
                     return Row(
                         children: <Widget>[CircularProgressIndicator()],
                         mainAxisAlignment: MainAxisAlignment.center);
-                  }
-                  if (snapshot.hasData) {
-                    var _snapshot = snapshot.data as List;
-                    return ListView.separated(
-                      physics: const BouncingScrollPhysics(),
-                      scrollDirection: Axis.vertical,
-                      itemCount: _snapshot.length,
-                      separatorBuilder: (context, _) =>
-                          const SizedBox(height: 10),
-                      itemBuilder: (BuildContext context, int index) {
-                        FoodItems fooditems = _snapshot[index];
-                        return CardDemoMeals(
-                          id: fooditems.fid,
-                          name: fooditems.fName,
-                          data: sendData,
-                        );
-                      },
-                    );
-                  }
-
-                  return Row(
-                      children: <Widget>[CircularProgressIndicator()],
-                      mainAxisAlignment: MainAxisAlignment.center);
-                },
+                  },
+                ),
               ),
-            ),
-            Container(
-              // padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  print(sendData.count);
-                  print(sendData.id);
-                  print("UserId: ${QueryResults.userId}");
-
-                  print("Time:${formattedDate}");
-                  dataBaseNotifier.addConsumption(
-                      c_servings: sendData.count,
-                      id: QueryResults.userId,
-                      fid: sendData.id);
-
-                  // history.add(sendData);
-                  // dataHistory.add(sendData);
-                },
-                child: const Text('Submit'),
-              ),
-            )
-
-            //   Expanded(
-            //     child: Container(
-            //       height: 350,
-            //       padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-
-            // child: ListView.separated(
-            //   physics: const BouncingScrollPhysics(),
-            //   scrollDirection: Axis.vertical,
-            //   itemCount: meals.length,
-            //   separatorBuilder: (context, _) =>
-            //       const SizedBox(height: 10),
-            //   itemBuilder: (BuildContext context, int index) =>
-            //       // CardDemoMeals(
-            //     meal: meals[index],
-            //     total: total,
-            //   ),
-            // ),
-            //     ),
-            //   ),
-          ],
+              Container(
+                // padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    print(sendData.count);
+                    print(sendData.id);
+                    print("UserId: ${QueryResults.userId}");
+        
+                    print("Time:${formattedDate}");
+                    dataBaseNotifier.addConsumption(
+                        c_servings: sendData.count,
+                        id: QueryResults.userId,
+                        fid: sendData.id);
+        
+                    // history.add(sendData);
+                    // dataHistory.add(sendData);
+                  },
+                  child: const Text('Submit'),
+                ),
+              )
+        
+              //   Expanded(
+              //     child: Container(
+              //       height: 350,
+              //       padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
+        
+              // child: ListView.separated(
+              //   physics: const BouncingScrollPhysics(),
+              //   scrollDirection: Axis.vertical,
+              //   itemCount: meals.length,
+              //   separatorBuilder: (context, _) =>
+              //       const SizedBox(height: 10),
+              //   itemBuilder: (BuildContext context, int index) =>
+              //       // CardDemoMeals(
+              //     meal: meals[index],
+              //     total: total,
+              //   ),
+              // ),
+              //     ),
+              //   ),
+            ],
+          ),
         ),
       ),
     );

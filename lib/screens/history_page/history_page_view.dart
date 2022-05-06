@@ -25,45 +25,41 @@ class _HistoryPageState extends State<HistoryPage> {
         title: Text("HistoryPage"),
         centerTitle: true,
       ),
-      body: Row(
-        children: [
-          Container(
-            width: 400,
-            padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-            child: FutureBuilder(
-              future: dataBaseNotifier.fetchConsumedData(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  print("Waiting");
-                  return Row(
-                      children: <Widget>[CircularProgressIndicator()],
-                      mainAxisAlignment: MainAxisAlignment.center);
-                }
-                if (snapshot.hasData) {
-                  var _snapshot = snapshot.data as List;
-                  return ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    itemCount: _snapshot.length,
-                    // separatorBuilder: (context, _) =>
-                    //     const SizedBox(height: 10),
-                    itemBuilder: (BuildContext context, int index) {
-                      ConsumedData consumedData = _snapshot[index];
-                      QueryResults.foodId = consumedData.fid;
-                      QueryResults.getFoodName();
+      body: Container(
+        width: 400,
+        padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
+        child: FutureBuilder(
+          future: dataBaseNotifier.fetchConsumedData(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              print("Waiting");
+              return Row(
+                  children: <Widget>[CircularProgressIndicator()],
+                  mainAxisAlignment: MainAxisAlignment.center);
+            }
+            if (snapshot.hasData) {
+              var _snapshot = snapshot.data as List;
+              return ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                itemCount: _snapshot.length,
+                // separatorBuilder: (context, _) =>
+                //     const SizedBox(height: 10),
+                itemBuilder: (BuildContext context, int index) {
+                  ConsumedData consumedData = _snapshot[index];
+                  QueryResults.foodId = consumedData.fid;
+                  QueryResults.getFoodName();
 
-                      return HistoryCard(data: consumedData);
-                    },
-                  );
-                }
+                  return HistoryCard(data: consumedData);
+                },
+              );
+            }
 
-                return Row(
-                    children: <Widget>[CircularProgressIndicator()],
-                    mainAxisAlignment: MainAxisAlignment.center);
-              },
-            ),
-          ),
-        ],
+            return Row(
+                children: <Widget>[CircularProgressIndicator()],
+                mainAxisAlignment: MainAxisAlignment.center);
+          },
+        ),
       ),
     );
   }
