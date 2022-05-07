@@ -22,37 +22,34 @@ class _HistoryCardState extends State<HistoryCard> {
     // });
     return Card(
       // clipBehavior: Clip.antiAlias,
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Icon(Icons.history),
-              ),
-              // SizedBox(width: 30),
-              // Text("FoodID:${this.widget.data.fid}"),
-              // QueryResults.foodId=this.widget.data.fid,
-              Padding(
+      child: SizedBox(
+        child: Column(
+          children: [
+            Container(
+              // width: 380,
+              child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Wrap(children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Icon(Icons.history),
+                  ),
                   Container(width: 300, child: Text(this.widget.data.f_name))
                 ]),
               ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("Servings: ${this.widget.data.cServings}"),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("Consumption_Time: ${this.widget.data.cTime}"),
-          ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Servings: ${this.widget.data.cServings}"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Consumption_Time: ${this.widget.data.cTime}"),
+            ),
 
-          // Image.asset('assets/images/bg.jpg'),
-        ],
+            // Image.asset('assets/images/bg.jpg'),
+          ],
+        ),
       ),
     );
   }

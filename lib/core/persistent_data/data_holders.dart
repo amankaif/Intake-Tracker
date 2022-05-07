@@ -28,7 +28,7 @@ class QueryResults {
             .execute();
         var data = response.data;
         print(data);
-        QueryResults.foodName = data[0]["name"];
+        QueryResults.userName = data[0]["name"];
         print(foodName);
         // QueryResults.userName = QueryResults.userName[0].toUpperCase() +
         //     QueryResults.userName.substring(1);

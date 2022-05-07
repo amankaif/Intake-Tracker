@@ -88,6 +88,8 @@ flutter:
     - assets/images/cartoon.png
     - assets/images/breakfast.jpg
     - assets/images/snacks.jpg
+    - assets/images/dinner.jpg
+    - assets/images/lunch.jpg
 
   fonts:
     - family: Inter
