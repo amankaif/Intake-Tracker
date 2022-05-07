@@ -30,9 +30,9 @@ class _BottomNavigationBar_State extends State<BottomNavigationBar_> {
         // automaticallyImplyLeading: false,
         centerTitle: true,
         // elevation: 0.0,
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
-        ],
+        // actions: [
+        //   IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+        // ],
         // backgroundColor: Colors.green,
       ),
       body: screens[index],

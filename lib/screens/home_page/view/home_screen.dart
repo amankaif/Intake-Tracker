@@ -19,7 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       // drawer: const NavBar(),
 
-
       body: Container(
           // height: 200,
           padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),

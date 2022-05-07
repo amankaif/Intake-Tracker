@@ -35,19 +35,27 @@ class NewPage extends StatelessWidget {
             // children: [CardDemoMeals(), CardDemoMeals(), CardDemoMeals()]
             // children: breakfast.map((meals) => mealsCard(meals)).toList(),
             children: [
-              AspectRatio(
-                aspectRatio: 5 / 3,
-                child: Image.asset(
-                  item.urlImage,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                item.title,
-                style: const TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: Container(
+                  color: Colors.grey.withOpacity(0.65),
+                  child: Column(children: [
+                    AspectRatio(
+                      aspectRatio: 5 / 3,
+                      child: Image.asset(
+                        item.urlImage,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      item.title,
+                      style: const TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ]),
                 ),
               ),
               Container(
@@ -82,7 +90,7 @@ class NewPage extends StatelessWidget {
                         },
                       );
                     }
-        
+
                     return Row(
                         children: <Widget>[CircularProgressIndicator()],
                         mainAxisAlignment: MainAxisAlignment.center);
@@ -96,25 +104,25 @@ class NewPage extends StatelessWidget {
                     print(sendData.count);
                     print(sendData.id);
                     print("UserId: ${QueryResults.userId}");
-        
+
                     print("Time:${formattedDate}");
                     dataBaseNotifier.addConsumption(
                         c_servings: sendData.count,
                         id: QueryResults.userId,
                         fid: sendData.id);
-        
+
                     // history.add(sendData);
                     // dataHistory.add(sendData);
                   },
                   child: const Text('Submit'),
                 ),
               )
-        
+
               //   Expanded(
               //     child: Container(
               //       height: 350,
               //       padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-        
+
               // child: ListView.separated(
               //   physics: const BouncingScrollPhysics(),
               //   scrollDirection: Axis.vertical,
